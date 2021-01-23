@@ -1,0 +1,11 @@
+.container {
+    background-color: whitesmoke;
+    margin-left: -150px;
+    width: 200px;
+    height: 500px;
+    text-align: center;
+}
+
+.container:hover {
+    margin-left: 0px;
+}

@@ -9,9 +9,8 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    /*position: fixed;*/
 }
-
-
 
 /*NAVBAR*/
 .item2 {
@@ -27,11 +26,17 @@
 .link, .socialLink {
     margin-left: 20px;
     color: white;
-
 }
 
 .link:hover{
     text-decoration: none;
+    text-shadow: 5px 5px 10px whitesmoke;
+    color: whitesmoke;
+}
+
+.link:active {
+    text-decoration: none;
+    color: black;
 }
 
 .social {
