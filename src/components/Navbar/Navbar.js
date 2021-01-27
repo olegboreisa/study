@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import classes from './Navbar.module.css'
 import { faUserGraduate } from "@fortawesome/free-solid-svg-icons"
-import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Navbar = () => {
@@ -13,8 +12,8 @@ const Navbar = () => {
 
             <div className={classes.item2}>
                 <NavLink to={"/"} className={classes.link}>Home</NavLink>
-                <NavLink to={"#"} className={classes.link}>About</NavLink>
-                <NavLink to={"/articles"} className={classes.link}>Contacts</NavLink>
+                <NavLink to={"/about"} className={classes.link}>About</NavLink>
+                <NavLink to={"/contacts"} className={classes.link}>Contacts</NavLink>
                 <NavLink to={"#"} className={classes.link}>Login</NavLink>
             </div>
 
