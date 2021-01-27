@@ -16,13 +16,6 @@ const Navbar = () => {
                 <NavLink to={"#"} className={classes.link}>About</NavLink>
                 <NavLink to={"/articles"} className={classes.link}>Contacts</NavLink>
                 <NavLink to={"#"} className={classes.link}>Login</NavLink>
-
-
-                <div className={classes.social}>
-                    <FontAwesomeIcon icon={faFacebook} size={"1x"} className={classes.socialLink}/>
-                    <FontAwesomeIcon icon={faInstagram} size={"1x"} className={classes.socialLink}/>
-                    <FontAwesomeIcon icon={faTwitter} size={"1x"} className={classes.socialLink}/>
-                </div>
             </div>
 
         </div>

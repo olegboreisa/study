@@ -1,11 +1,18 @@
 .container {
     background-color: whitesmoke;
-    margin-left: -150px;
-    width: 200px;
-    height: 500px;
-    text-align: center;
+    width: 250px;
+    /*;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*      */
+    font-family: 'Anton', sans-serif;
 }
 
-.container:hover {
-    margin-left: 0px;
+.cat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

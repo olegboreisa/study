@@ -4,12 +4,10 @@
     font-family: Lato, sans-serif;
     background-color: #B5651D;
     width: 100%;
-    height: 70px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    /*position: fixed;*/
 }
 
 /*NAVBAR*/
@@ -37,8 +35,4 @@
 .link:active {
     text-decoration: none;
     color: black;
-}
-
-.social {
-    margin-left: 20px;
 }
