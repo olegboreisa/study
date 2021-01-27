@@ -8,6 +8,7 @@
     align-items: center;
     /*      */
     font-family: 'Anton', sans-serif;
+    border-right: 5px solid blanchedalmond;
 }
 
 .cat {
@@ -15,4 +16,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+
+.link {
+    color: black;
+    margin-top: 10px;
+}
+
+.link:hover {
+    color: deepskyblue;
+    text-decoration: none;
 }
