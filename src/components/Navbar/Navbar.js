@@ -12,9 +12,9 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faUserGraduate} size={"4x"}/>
 
             <div className={classes.item2}>
-                <NavLink to={"#"} className={classes.link}>Home</NavLink>
+                <NavLink to={"/"} className={classes.link}>Home</NavLink>
                 <NavLink to={"#"} className={classes.link}>About</NavLink>
-                <NavLink to={"#"} className={classes.link}>Content</NavLink>
+                <NavLink to={"/articles"} className={classes.link}>Contacts</NavLink>
                 <NavLink to={"#"} className={classes.link}>Login</NavLink>
 
 

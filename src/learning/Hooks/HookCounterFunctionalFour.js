@@ -4,7 +4,7 @@ export default () => {
     const [items, setItems] = useState([])
 
     const addItem = () => {
-        setItems([... items, {
+        setItems([...items, {
             id: items.length,
             value: Math.floor(Math.random() * 10) + 1
         }])

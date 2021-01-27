@@ -1,32 +1,20 @@
-import React, {useState, useEffect} from 'react'
-import axios from "axios";
+import React from 'react'
+import {Switch, Route} from "react-router";
+import Welcome from './pages/Welcome'
+import Article from './pages/Articles'
 
 
-const Content = () => {
-    const [articles, setArticles] = useState ()
+const Content = () => (
 
-    const url = ('http://localhost:8080/api/articles')
-
-    useEffect(() => {
-        axios.get(url)
-            .then(res => {
-                setArticles(res.data)
-                console.log('Articles', articles)
-                console.log('Articles', res.data)
-            })
-    }, [])
-
-        return (
-            articles.map((art) => {
-                    return (
-                        <div key={art.id}>
-                            <h1>{art.title}</h1>
-                            <p>{art.text}</p>
-                        </div>
-                    )
-                })
-        )
-
-}
-
+    <div>
+        <Switch>
+            <Route exact path={"/"}>
+                <Welcome />
+            </Route>
+            <Route exact path={"/articles"}>
+                <Article />
+            </Route>
+        </Switch>
+    </div>
+)
 export default Content;
