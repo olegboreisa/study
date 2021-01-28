@@ -25,7 +25,7 @@ const Sidebar = () => {
             <h3 style={{textDecoration: "underline"}}>Categories</h3>
             <div className={classes.cat}>
                 {
-                    categories.map((cat) => (
+                    categories.map(cat => (
                         <Link to={cat.path} key={cat.id} className={classes.link}>{cat.cat}</Link>
 
                     ))

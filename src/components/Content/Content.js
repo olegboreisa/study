@@ -11,7 +11,7 @@ const Content = () => (
         <Switch>
             <Route path="/about" component={About} />
             <Route path="/contacts" component={Contacts} />
-            <Route path exact="/" component={Welcome} />
+            <Route path exact="/articles" component={Welcome} />
         </Switch>
     </div>
 )
