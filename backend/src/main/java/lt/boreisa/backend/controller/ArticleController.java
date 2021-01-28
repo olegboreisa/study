@@ -17,13 +17,15 @@ public class ArticleController {
         this.articleRepo = articleRepo;
     }
 
-    @GetMapping("/art")
+    @GetMapping("/category")
     public List<Article> getArticles () {
         return articleRepo.findAll();
     }
 
-    @GetMapping("/art/{id}")
-    public Article getArticle (@PathVariable Long id) {
-        return articleRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid id"));
+    @GetMapping("/category/{cat}")
+    public List<Article> getArticle (@PathVariable String cat) {
+        return articleRepo.findArticlesByCategory(cat);
     }
+
+
 }

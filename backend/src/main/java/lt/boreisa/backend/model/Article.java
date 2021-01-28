@@ -18,8 +18,8 @@ public class Article {
     @CreationTimestamp
     private Date creation_date;
 
-    @Column(name = "module")
-    private String module;
+    @ManyToOne
+    private Category category;
 
     @Column(name = "title")
     private String title;
