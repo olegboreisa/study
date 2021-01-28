@@ -1,6 +1,5 @@
 import React from 'react'
 
 export default () => (
-    <h1>Welcome Page</h1>
+    <h1> Hi Art By Id</h1>
 )
-

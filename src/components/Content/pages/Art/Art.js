@@ -1,5 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import axios from "axios";
+import axios from 'axios';
+import {NavLink} from 'react-router-dom'
+import classes from "./Art.module.css";
+import Window from "../../Window";
+import one from "../../assets/pics/one.jpg";
+
 
 export default () => {
 
@@ -18,15 +23,17 @@ export default () => {
     }, [])
 
     return (
-        <div>
+        <div className={classes.container}>
             {
-                articles.map((article) => (
-                    <div>
-                        <h5 key={ article.id }>{ article.title }</h5>
-                        <p>{ article.text }</p>
-                    </div>
+                articles.map(article => (
+                    <NavLink to={'/art/' + article.id} className={classes.link}>
+                        <div className={classes.column}>
+                            <Window picture={one} title={article.title}/>
+                        </div>
+                    </NavLink>
                 ))
             }
         </div>
     )
 }
+
