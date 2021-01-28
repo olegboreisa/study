@@ -1,33 +1,26 @@
-import React, {useEffect, useState} from 'react'
-import axios from "axios";
+import React from 'react'
+import Window from "../../Window";
+import classes from './Welcome.module.css'
+import one from '../../assets/pics/one.jpg'
+import two from '../../assets/pics/two.jpg'
+import three from '../../assets/pics/three.jpg'
+import four from '../../assets/pics/four.jpg'
 
-export default () => {
+export default () => (
+    <div className={classes.container}>
 
-    const [articles, setArticles] = useState ([])
-    const url = '/articles'
-
-    useEffect( () => {
-            axios.get(url)
-                .then(response => {
-                    console.log(response.data)
-                    setArticles(response.data)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        }, [])
-
-    return (
-        <div>
-            {
-                articles.map((article) => (
-                    <div>
-                        <h5 key={ article.id }>{ article.title }</h5>
-                        <p>{ article.text }</p>
-                    </div>
-                ))
-            }
+        <div className={classes.row}>
+            <div className={classes.column}><Window picture={one} title={"One"}/></div>
+            <div className={classes.column}><Window picture={two} title={"One"}/></div>
         </div>
-    )
-}
+
+
+        <div className={classes.row}>
+            <div className={classes.column}><Window picture={three} title={"One"}/></div>
+            <div className={classes.column}><Window picture={four} title={"One"}/></div>
+        </div>
+
+    </div>
+
+)
 
