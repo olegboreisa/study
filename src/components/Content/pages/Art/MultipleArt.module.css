@@ -1,0 +1,20 @@
+.container {
+    min-width: 400px;
+    width: 100%;
+    /*    */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    text-align: justify;
+    margin: 20px;
+}
+.link {
+    color: black;
+}
+.link:hover {
+    text-decoration: none;
+}

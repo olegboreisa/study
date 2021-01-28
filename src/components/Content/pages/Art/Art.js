@@ -1,18 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
-import {NavLink} from 'react-router-dom'
-import classes from "./Art.module.css";
-import Window from "../../Window";
-import one from "../../assets/pics/one.jpg";
+import {NavLink, Route} from 'react-router-dom'
+import {Switch} from "react-router";
+import MultipleArt from "./MultipleArt";
+import SingleArtById from "./SingleArtById";
 
 
 export default () => {
 
-    const [articles, setArticles] = useState ([])
-    const url = '/art'
+    const [articles, setArticles] = useState([])
 
-    useEffect( () => {
-        axios.get(url)
+    useEffect(() => {
+        axios.get('/art')
             .then(response => {
                 console.log(response.data)
                 setArticles(response.data)
@@ -22,18 +21,16 @@ export default () => {
             })
     }, [])
 
+
     return (
-        <div className={classes.container}>
-            {
-                articles.map(article => (
-                    <NavLink to={'/art/' + article.id} className={classes.link}>
-                        <div className={classes.column}>
-                            <Window picture={one} title={article.title}/>
-                        </div>
-                    </NavLink>
-                ))
-            }
-        </div>
+           <Switch>
+               <Route exact path='/art'>
+                   <MultipleArt articles={articles} />
+               </Route>
+               <Route
+                   path='/art/:id'>
+                   <SingleArtById />
+               </Route>
+           </Switch>
     )
 }
-
