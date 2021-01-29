@@ -9,6 +9,10 @@
     /*      */
     font-family: 'Anton', sans-serif;
     border-right: 5px solid blanchedalmond;
+    /*    */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .cat {
