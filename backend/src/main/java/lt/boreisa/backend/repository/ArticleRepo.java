@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+//[THIS IS TO COMMUNICATE WITH DATABASE]
 @Repository
 public interface ArticleRepo extends JpaRepository <Article, Long> {
+
 
 
     @Query(
@@ -17,5 +18,3 @@ public interface ArticleRepo extends JpaRepository <Article, Long> {
     )
     List <Article> findArticlesByCategory(String category);
 }
-
-// [HERE WE COMMUNICATE WITH DATABASE]

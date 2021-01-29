@@ -10,7 +10,7 @@ export default () => {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        axios.get('/articles')
+        axios.get('/articles/1/3')
             .then(response => {
                 console.log(response.data)
                 setArticles(response.data)

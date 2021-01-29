@@ -7,13 +7,16 @@ import lt.boreisa.backend.repository.ArticleRepo;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ArticleMapService {
+public class ArticleService {
 
     @Autowired
     private ArticleRepo articleRepo;
@@ -21,9 +24,11 @@ public class ArticleMapService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<ArticleDTO> getAllArticles() {
-        return ((List<Article>) articleRepo
-                .findAll())
+    public List<ArticleDTO> getAllArticles(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+
+        return ((Page<Article>) articleRepo
+                .findAll(pageable))
                 .stream()
                 .map(this::convertToArticleDTO)
                 .collect(Collectors.toList());

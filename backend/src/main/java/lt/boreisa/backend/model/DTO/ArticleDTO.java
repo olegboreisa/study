@@ -1,7 +1,6 @@
 package lt.boreisa.backend.model.DTO;
 
-import lombok.Data;
-import lt.boreisa.backend.model.DTO.CategoryDTO;
+import lombok.Data;;
 
 import java.util.Date;
 
@@ -13,6 +12,8 @@ public class ArticleDTO {
     private String title;
 
     private Date creation_date;
+
+    private String text;
 
     private CategoryDTO categoryName;
 }
