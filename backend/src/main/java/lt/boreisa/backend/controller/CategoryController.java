@@ -31,4 +31,9 @@ public class CategoryController {
         Category category = categoryService.convertToCategory(categoryDTO);
         return categoryService.saveCategory(category);
     }
+
+    @DeleteMapping("/categories/delete/{id}")
+    public void deleteCategory (@PathVariable Long id) {
+        categoryService.deleteCategory(id);
+    }
 }

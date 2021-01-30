@@ -17,7 +17,7 @@ public class Category {
     @Column(name ="category_name")
     private String categoryName;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @Column(name = "article")
     private List<Article> article;
 }

@@ -24,8 +24,8 @@
 }
 
 .link {
+    margin-right: 10px;
     color: black;
-    margin-top: 10px;
 }
 
 .link:hover {
@@ -38,4 +38,17 @@
     color: black;
     border: 3px solid black;
     padding: 0 5px 0 5px;
+}
+
+.minus {
+    color: black;
+}
+
+.minus:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.wrapper {
+    margin-top: 10px;
 }
