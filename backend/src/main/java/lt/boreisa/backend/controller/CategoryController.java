@@ -4,10 +4,11 @@ import lt.boreisa.backend.model.Category;
 import lt.boreisa.backend.model.DTO.CategoryDTO;
 import lt.boreisa.backend.repository.CategoryRepo;
 import lt.boreisa.backend.service.CategoryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.*;
 import java.util.List;
 
 @RestController
@@ -23,5 +24,11 @@ public class CategoryController {
     @GetMapping("/categories")
     public List<CategoryDTO> getAllCategories () {
         return categoryService.getAllCategories();
+    }
+
+    @PostMapping("/add-category")
+    public Category addCategory (@RequestBody CategoryDTO categoryDTO) {
+        Category category = categoryService.convertToCategory(categoryDTO);
+        return categoryService.saveCategory(category);
     }
 }

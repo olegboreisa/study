@@ -7,6 +7,7 @@ import lt.boreisa.backend.model.DTO.CategoryDTO;
 import lt.boreisa.backend.repository.CategoryRepo;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +27,19 @@ public class CategoryService {
     @Autowired
     private ModelMapper modelMapper;
 
+    private CategoryDTO convertToCategoryDTO(Category category) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        CategoryDTO categoryDTO = modelMapper.map(category, CategoryDTO.class);
+        return categoryDTO;
+    }
+
+    public Category convertToCategory (CategoryDTO categoryDTO) {
+        Category category = new Category();
+        BeanUtils.copyProperties(categoryDTO, category, Category.class);
+        return category;
+    }
+
     public List<CategoryDTO> getAllCategories() {
         return ((List<Category>) categoryRepo
                 .findAll())
@@ -34,11 +48,7 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
-    private CategoryDTO convertToCategoryDTO(Category category) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        CategoryDTO categoryDTO = modelMapper.map(category, CategoryDTO.class);
-        return categoryDTO;
+    public Category saveCategory (Category category) {
+        return categoryRepo.save(category);
     }
-
 }
