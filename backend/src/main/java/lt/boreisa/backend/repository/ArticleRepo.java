@@ -11,7 +11,6 @@ import java.util.List;
 public interface ArticleRepo extends JpaRepository <Article, Long> {
 
 
-
     @Query(
             value = "Select * FROM article WHERE category_name = ?1",
             nativeQuery = true
