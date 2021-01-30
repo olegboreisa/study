@@ -28,7 +28,7 @@ const Sidebar = () => {
                     ))
                 }
             </div>
-            <Link to="/api/categories/add" className={classes.plus}>
+            <Link to="/categories/add" className={classes.plus}>
                 <FontAwesomeIcon icon={faPlus} size={"1x"} />
             </Link>
         </div>
