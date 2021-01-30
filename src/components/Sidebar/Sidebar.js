@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import classes from './Sidebar.module.css'
 import {Link} from "react-router-dom";
 import axios from 'axios';
-
-
+import {faPlus, faUserGraduate} from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Sidebar = () => {
     const [categories, setCategories] = useState ([])
@@ -28,7 +28,11 @@ const Sidebar = () => {
                     ))
                 }
             </div>
+            <Link to="/api/categories/add" className={classes.plus}>
+                <FontAwesomeIcon icon={faPlus} size={"1x"} />
+            </Link>
         </div>
+
     )
 }
 

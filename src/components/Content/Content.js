@@ -11,6 +11,7 @@ const Content = () => (
             <Route path="/about" component={About} />
             <Route path="/contacts" component={Contacts} />
             <Route exact path="/" component={Categories}/>
+            <Route path="api/categories/add" component={}
 
         </Switch>
 
