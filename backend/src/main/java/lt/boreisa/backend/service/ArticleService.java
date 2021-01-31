@@ -6,6 +6,7 @@ import lt.boreisa.backend.model.DTO.ArticleDTO;
 import lt.boreisa.backend.repository.ArticleRepo;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +25,19 @@ public class ArticleService {
     @Autowired
     private ModelMapper modelMapper;
 
+    private ArticleDTO convertToArticleDTO(Article article) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        ArticleDTO articleDTO = modelMapper.map(article, ArticleDTO.class);
+        return articleDTO;
+    }
+
+    public Article convertToArticle (ArticleDTO articleDTO){
+        Article article = new Article();
+        BeanUtils.copyProperties(articleDTO, article, Article.class);
+        return article;
+    }
+
     public List<ArticleDTO> getAllArticles(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
 
@@ -34,10 +48,7 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 
-    private ArticleDTO convertToArticleDTO(Article article) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-                ArticleDTO articleDTO = modelMapper.map(article, ArticleDTO.class);
-        return articleDTO;
+    public Article saveArticle (Article article) {
+        return articleRepo.save(article);
     }
 }

@@ -48,7 +48,7 @@ const Sidebar = () => {
                 }
             </div>
             <Link to="/categories/add" className={classes.plus}>
-                <FontAwesomeIcon icon={faPlus} size={"1x"} />
+                <FontAwesomeIcon icon={faPlus} size={"2x"} />
             </Link>
         </div>
 

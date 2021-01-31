@@ -4,6 +4,7 @@ import About from './pages/About/About'
 import Contacts from './pages/Contacts/Contacts'
 import Categories from './pages/Categories/Categories'
 import CategoryAdd from "./pages/Categories/CategoryAdd";
+import ArticleAdd from "./ArticleAddTable/ArticleAdd";
 
 
 const Content = () => (
@@ -12,8 +13,8 @@ const Content = () => (
             <Route path="/about" component={About} />
             <Route path="/contacts" component={Contacts} />
             <Route path="/categories/add" component={CategoryAdd} />
+            <Route path="/articles/add" component={ArticleAdd} />
             <Route exact path="/" component={Categories}/>
-
         </Switch>
 
 )

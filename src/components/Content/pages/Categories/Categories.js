@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import classes from "../Categories/Categories.module.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 import Window from "../../Window";
 import one from "../../assets/pics/one.jpg";
 import Pagination from '@material-ui/lab/Pagination';
-
+import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default () => {
 
@@ -45,6 +46,11 @@ export default () => {
             <div>
                 <Pagination count={count} showFirstButton showLastButton siblingCount={0} onChange={handleChange}/>
             </div>
+
+            <Link to={"/articles/add"} className={classes.addArticle}>
+                <FontAwesomeIcon icon={faPlusCircle} size={"3x"}/>
+            </Link>
+
         </div>
     )
 }
