@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
+import static lt.boreisa.backend.security.SecurityConstants.*;
+
 /**
  * [Užklausų perėmimą. Pabandymą autentifikuoti asmenį] -> JwtAuthenticationFilter
  * [MES PERRAŠINĖJAM VIENĄ IŠ JAU EGZISTUOJANČIŲ FILTRŲ - UsernamePasswordAuthenticationFilter]
@@ -24,8 +26,7 @@ import java.util.Map;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
+
     private JwtProvider jwtProvider;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtProvider jwtProvider) {
@@ -63,6 +64,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwtToken = jwtProvider.createToken(user);
 
         // [AUTHORIZATION TYPE BEARER BECAUSE WE RETURN TOKEN]
-        response.addHeader("Authorization", "Bearer " + jwtToken);
+        response.addHeader(AUTHORIZATION_HEADER, AUTHORIZATION_HEADER_PREFIX + jwtToken);
     }
 }

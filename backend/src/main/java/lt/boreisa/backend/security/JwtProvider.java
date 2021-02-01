@@ -3,6 +3,7 @@ package lt.boreisa.backend.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,9 @@ public class JwtProvider {
                                         .map(grantedAuthority -> grantedAuthority.getAuthority())
                                         .collect(Collectors.toList())) // [CUSTOM OBJECTS THAT WE WANT TO ADD .. IN HEADERS..?]
                 .compact();
+    }
+
+    public Authentication getAuthentication(String jwt) {
+        return null;
     }
 }
