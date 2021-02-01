@@ -30,10 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // [INSTEAD OF .login DEFAULT CONFIGURATION THAT WE USED IN PREVIOUS PROJECT BECAUSE BACK DOES NOT KNOW ABOUT FRONT AND VICE VERSA]
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
-    }
+//    @Bean
+//    @Override
+//    public AuthenticationManager authenticationManager() throws Exception {
+//        return super.authenticationManager();
+//    }
 
 }
