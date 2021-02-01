@@ -2,6 +2,7 @@ package lt.boreisa.backend.config;
 
 import lt.boreisa.backend.security.JwtAuthenticationFilter;
 import lt.boreisa.backend.security.JwtProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +12,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private JwtProvider jwtProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -24,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/login").permitAll()
                     .anyRequest().authenticated()
                     .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), new JwtProvider())); // [ATLIEKA AUTENTIFIKACIJĄ 1:57:00]
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider)); // [ATLIEKA AUTENTIFIKACIJĄ 1:57:00]
 
 
     }
