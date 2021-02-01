@@ -1,5 +1,6 @@
 package lt.boreisa.backend.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import lt.boreisa.backend.model.Article;
 import lt.boreisa.backend.model.DTO.ArticleDTO;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.io.DataInput;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +27,12 @@ public class ArticleService {
     @Autowired
     private ModelMapper modelMapper;
 
+//    @Autowired
+//    private JsonParsingService jsonParsingService;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
     private ArticleDTO convertToArticleDTO(Article article) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
@@ -34,7 +42,7 @@ public class ArticleService {
 
     public Article convertToArticle (ArticleDTO articleDTO){
         Article article = new Article();
-        BeanUtils.copyProperties(articleDTO, article, Article.class);
+        BeanUtils.copyProperties(articleDTO, article);
         return article;
     }
 
