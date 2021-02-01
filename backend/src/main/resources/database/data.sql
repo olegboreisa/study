@@ -1,4 +1,4 @@
-INSERT INTO category (id, category_name) VALUES
+INSERT INTO category (id, category) VALUES
 (1, 'Biology'),
 (2, 'Chemistry'),
 (3, 'Art'),

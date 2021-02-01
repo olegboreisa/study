@@ -16,10 +16,8 @@ public class Article {
     private Long id;
 
     @CreationTimestamp
-    private Date creation_date;
-
-    @ManyToOne
-    private Category category;
+    @Column(name = "creation_date")
+    private Date date;
 
     @Column(name = "title")
     private String title;
@@ -27,4 +25,7 @@ public class Article {
     @Lob
     @Column(name = "text")
     private String text;
+
+    @ManyToOne
+    private Category category;
 }

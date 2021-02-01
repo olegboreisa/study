@@ -14,10 +14,14 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name ="category_name")
-    private String categoryName;
+    @Column(name ="category")
+    private String category;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @Column(name = "article")
+    @JoinTable(
+            name="category_article",
+            joinColumns = @JoinColumn( name="category_id"),
+            inverseJoinColumns = @JoinColumn( name="article_id")
+    )
     private List<Article> article;
 }
