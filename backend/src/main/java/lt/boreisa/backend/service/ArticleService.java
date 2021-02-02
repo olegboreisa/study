@@ -76,13 +76,12 @@ public class ArticleService {
     @Transactional
     public Article saveArticle (ArticleDTO articleDto) {
         Article article = convertToArticle(articleDto);
-        List<Category> categories = new ArrayList<>();
+
         for (Long categoryId : articleDto.getCategoryIds()) {
-            Category category = categoryRepo.findById(categoryId).get();
-            categories.add(category);
-            category.getArticle().add(article);
+            Category category = categoryRepo.getOne(categoryId);
+            article.addCategory(category);
         }
-        article.setCategory(categories);
+
 
 
 

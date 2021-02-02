@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,5 +29,10 @@ public class Article {
     private String text;
 
     @ManyToMany(mappedBy = "article")
-    private List<Category> category;
+    private List<Category> category = new ArrayList<>();
+
+    public void addCategory(Category category) {
+        this.category.add(category);
+        category.getArticle().add(this);
+    }
 }
