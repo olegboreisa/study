@@ -4,11 +4,6 @@ import {Field, Form, Formik} from "formik";
 
 export default () => {
 
-    const Biology = {
-        id: '1',
-        categoryName: 'Biology'
-    }
-
     const handleOnSubmit = (formValues) => {
         axios.post("/api/articles/add", formValues)
             .then((response) => {
@@ -24,18 +19,19 @@ export default () => {
                 title: '',
                 text: '',
                 category: {
-                    id: '',
-                },
+                    id: ''
+                }
             }}
             onSubmit={handleOnSubmit}>
             {(props) => (
                 <>
                     <div> Please enter the the following: </div>
                     <Form>
-                        <Field as="select" type="text" name="categoryName">
-                            <option value={Biology}>Biology</option>
-                            <option value="Chemistry">Chemistry</option>
-                            <option value="Art">Art</option>
+                        <Field as="select" name="category.id">
+                            <option value="0">Please Select</option>
+                            <option value="1">Biology</option>
+                            <option value="2">Chemistry</option>
+                            <option value="3">Art</option>
                         </Field>
 
                         <Field as="textarea" type="text" name="title" placeholder="Article Title"/>

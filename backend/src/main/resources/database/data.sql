@@ -19,12 +19,3 @@ INSERT INTO article (id, creation_date, title, text, category_id) VALUES
 (6, '1910-04-04', 'What diffusion happens in coffee?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1),
 
 (7, '2022-12-12', 'What is covalent bond?', 'A covalent bond is a chemical bond that involves the sharing of electron pairs between atoms. These electron pairs are known as shared pairs or bonding pairs, and the stable balance of attractive and repulsive forces between atoms, when they share electrons, is known as covalent bonding', 2);
-
-INSERT INTO category_article (category_id, article_id) VALUES
-(1, 1),
-(2, 2),
-(5, 3),
-(5, 4),
-(1, 5),
-(1, 6),
-(2, 7);

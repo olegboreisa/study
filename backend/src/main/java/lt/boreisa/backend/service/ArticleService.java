@@ -3,8 +3,11 @@ package lt.boreisa.backend.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import lt.boreisa.backend.model.Article;
+import lt.boreisa.backend.model.Category;
 import lt.boreisa.backend.model.DTO.ArticleDTO;
+import lt.boreisa.backend.model.DTO.CategoryDTO;
 import lt.boreisa.backend.repository.ArticleRepo;
+import lt.boreisa.backend.repository.CategoryRepo;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.BeanUtils;
@@ -25,13 +28,16 @@ public class ArticleService {
     private ArticleRepo articleRepo;
 
     @Autowired
+    private CategoryRepo categoryRepo;
+
+    @Autowired
     private ModelMapper modelMapper;
 
 //    @Autowired
 //    private JsonParsingService jsonParsingService;
 
-    @Autowired
-    ObjectMapper objectMapper;
+//    @Autowired
+//    ObjectMapper objectMapper;
 
     private ArticleDTO convertToArticleDTO(Article article) {
         modelMapper.getConfiguration()
@@ -42,13 +48,15 @@ public class ArticleService {
 
     public Article convertToArticle (ArticleDTO articleDTO){
         Article article = new Article();
-        BeanUtils.copyProperties(articleDTO, article);
+        article.setTitle(articleDTO.getTitle());
+        article.setText(articleDTO.getText());
+        Category category = categoryRepo.getOne(article.getCategory().getId());
+        article.setCategory(category);
         return article;
     }
 
     public List<ArticleDTO> getAllArticles(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-
         return ((Page<Article>) articleRepo
                 .findAll(pageable))
                 .stream()

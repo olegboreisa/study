@@ -22,11 +22,11 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @Autowired
-    private CategoryService categoryService;
+//    @Autowired
+//    private CategoryService categoryService;
 
-    @Autowired
-    private ParsingService parsingService;
+//    @Autowired
+//    private ParsingService parsingService;
 
     @GetMapping("/articles/{pageNo}/{pageSize}")
     public List<ArticleDTO> getArticles (@PathVariable int pageNo, @PathVariable int pageSize) {
