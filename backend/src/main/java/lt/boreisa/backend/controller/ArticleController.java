@@ -35,7 +35,7 @@ public class ArticleController {
 
     @PostMapping("/articles/add")
     public void addArticle (@RequestBody ArticleDTO articleDTO) {
-        Article article = articleService.convertToArticle(articleDTO);
-        articleService.saveArticle(article);
+//        Article article = articleService.convertToArticle(articleDTO);
+        articleService.saveArticle(articleDTO);
     }
 }

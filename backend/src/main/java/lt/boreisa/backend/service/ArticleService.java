@@ -16,9 +16,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.DataInput;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,8 +53,14 @@ public class ArticleService {
         Article article = new Article();
         article.setTitle(articleDTO.getTitle());
         article.setText(articleDTO.getText());
-        Category category = categoryRepo.getOne(article.getCategory().getId());
-        article.setCategory(category);
+//        List<Category> categoryList = new ArrayList<>();
+////        List<CategoryDTO> categoryList = new ArrayList<>();
+//        for (Category category : categoryRepo.findAll()) {
+//            categoryList.add(category);
+//        }
+//
+
+
         return article;
     }
 
@@ -64,7 +73,19 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 
-    public Article saveArticle (Article article) {
+    @Transactional
+    public Article saveArticle (ArticleDTO articleDto) {
+        Article article = convertToArticle(articleDto);
+        List<Category> categories = new ArrayList<>();
+        for (Long categoryId : articleDto.getCategoryIds()) {
+            Category category = categoryRepo.findById(categoryId).get();
+            categories.add(category);
+            category.getArticle().add(article);
+        }
+        article.setCategory(categories);
+
+
+
         return articleRepo.save(article);
     }
 }

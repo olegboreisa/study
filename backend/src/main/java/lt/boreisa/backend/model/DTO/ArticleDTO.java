@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @JsonIgnoreProperties
@@ -17,6 +18,6 @@ public class ArticleDTO {
 
     private String text;
 
-    private CategoryDTO category;
+    private List<Long> categoryIds;
 
 }

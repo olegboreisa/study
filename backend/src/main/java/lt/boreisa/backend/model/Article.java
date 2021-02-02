@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,6 +27,6 @@ public class Article {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne
-    private Category category;
+    @ManyToMany(mappedBy = "article")
+    private List<Category> category;
 }
