@@ -53,14 +53,7 @@ public class ArticleService {
         Article article = new Article();
         article.setTitle(articleDTO.getTitle());
         article.setText(articleDTO.getText());
-//        List<Category> categoryList = new ArrayList<>();
-////        List<CategoryDTO> categoryList = new ArrayList<>();
-//        for (Category category : categoryRepo.findAll()) {
-//            categoryList.add(category);
-//        }
-//
-
-
+        article.setCategory(categoryRepo.findById(articleDTO.getCategoryId().getId()).orElseThrow());
         return article;
     }
 
@@ -73,18 +66,8 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 
-    @Transactional
     public Article saveArticle (ArticleDTO articleDto) {
         Article article = convertToArticle(articleDto);
-
-        for (Long categoryId : articleDto.getCategoryIds()) {
-            Category category = categoryRepo.getOne(categoryId);
-            article.addCategory(category);
-        }
-
-
-
-
         return articleRepo.save(article);
     }
 }

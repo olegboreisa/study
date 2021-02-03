@@ -28,11 +28,16 @@ public class Article {
     @Column(name = "text")
     private String text;
 
-    @ManyToMany(mappedBy = "article")
-    private List<Category> category = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-    public void addCategory(Category category) {
-        this.category.add(category);
-        category.getArticle().add(this);
-    }
 }
+
+/**
+ * In a One-to-Many/Many-to-One relationship, the owning side is usually defined on the ‘many' side of the relationship. It's usually the side which owns the foreign key.
+ *
+ * The @JoinColumn annotation defines that actual physical mapping on the owning side
+ *
+ * It is simple means that Article Entity will have a foreign key named category_id referring to the primary attribute id of Category entity
+ */

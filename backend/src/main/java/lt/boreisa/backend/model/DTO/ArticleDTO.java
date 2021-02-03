@@ -1,10 +1,11 @@
 package lt.boreisa.backend.model.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;;
+import lombok.Data;
+import lt.boreisa.backend.model.Category;;
 
 import java.util.Date;
-import java.util.List;
+
 
 @Data
 @JsonIgnoreProperties
@@ -18,6 +19,6 @@ public class ArticleDTO {
 
     private String text;
 
-    private List<Long> categoryIds;
+    private Category categoryId;
 
 }
