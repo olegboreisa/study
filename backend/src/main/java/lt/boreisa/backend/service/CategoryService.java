@@ -52,5 +52,7 @@ public class CategoryService {
         return categoryRepo.save(category);
     }
 
-    public void deleteCategory (Long id) { categoryRepo.deleteById(id);}
+    public void deleteCategory (Long id) {
+        categoryRepo.deleteById(id);
+    }
 }

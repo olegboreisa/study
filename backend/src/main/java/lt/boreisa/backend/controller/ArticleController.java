@@ -30,4 +30,9 @@ public class ArticleController {
     public void addArticle (@RequestBody ArticleDTO articleDTO) {
         articleService.saveArticle(articleDTO);
     }
+
+    @DeleteMapping("/articles/delete/{id}")
+    public void deleteSingleArticle (@PathVariable Long id) {
+        articleService.deleteSingleArticle(id);
+    }
 }

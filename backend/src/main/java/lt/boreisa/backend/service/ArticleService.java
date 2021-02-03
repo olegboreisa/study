@@ -60,6 +60,10 @@ public class ArticleService {
         Article article = convertToArticle(articleDto);
         articleRepo.save(article);
     }
+
+    public void deleteSingleArticle (Long id){
+        articleRepo.deleteById(id);
+    }
 }
 
 
