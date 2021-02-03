@@ -16,14 +16,14 @@ export default () => {
     return (
         <Formik
             initialValues={{
-                categoryName: ''
+                category: ''
             }}
             onSubmit={handleOnSubmit}>
             {(props) => (
                 <>
                     <div> Please enter the category: </div>
                     <Form>
-                        <Field type="text" name="categoryName"/>
+                        <Field type="text" name="category"/>
 
                         <button type="submit">Submit</button>
                     </Form>

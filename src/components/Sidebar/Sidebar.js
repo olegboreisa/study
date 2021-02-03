@@ -37,9 +37,9 @@ const Sidebar = () => {
             <div className={classes.cat}>
                 {
                     categories.map(cat => (
-                        <div className={classes.wrapper}>
+                        <div className={classes.wrapper} key={cat.id}>
 
-                            <Link to={cat.category} key={cat.id} className={classes.link}>{cat.category} </Link>
+                            <Link to={cat.category} className={classes.link}>{cat.category} </Link>
 
                             <FontAwesomeIcon icon={faMinus} size={"1x"} onClick={() => deleteCategory(cat.id)} className={classes.minus}/>
 

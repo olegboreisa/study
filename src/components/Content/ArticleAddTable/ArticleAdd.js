@@ -19,7 +19,7 @@ export default () => {
             initialValues={{
                 title: '',
                 text: '',
-                categoryId: {
+                category: {
                     id: 1
                 }
             }}

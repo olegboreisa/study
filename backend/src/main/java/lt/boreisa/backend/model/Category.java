@@ -18,8 +18,10 @@ public class Category {
     @Column(name ="category")
     private String category;
 
-    @OneToMany(mappedBy = "category")
-    private List<Article> article;
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            mappedBy = "category")
+    private List<Article> article = new ArrayList<>();
 }
 
 /**
