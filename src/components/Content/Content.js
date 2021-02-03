@@ -2,11 +2,11 @@ import React from 'react'
 import {Switch, Route} from "react-router";
 import About from './pages/About/About'
 import Contacts from './pages/Contacts/Contacts'
-import Categories from './pages/Categories/Categories'
-import CategoryAdd from "./pages/Categories/CategoryAdd";
-import ArticleAdd from "./ArticleAddTable/ArticleAdd";
-import SingleArtById from "./pages/Art/SingleArtById";
-import UpdateArt from "./ArticleAddTable/UpdateArt";
+import Categories from './pages/Articles/Articles'
+import CategoryAdd from "../Sidebar/AddCategory";
+import ArticleAdd from "./pages/Articles/Article/AddArticle";
+import SingleArtById from "./pages/Articles/Article/Article";
+import UpdateArt from "./pages/Articles/Article/UpdateArticle";
 
 
 const Content = () => (

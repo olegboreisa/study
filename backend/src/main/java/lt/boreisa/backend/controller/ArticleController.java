@@ -17,9 +17,9 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping("/articles/{pageNo}/{pageSize}")
-    public List<ArticleDTO> getArticles (@PathVariable int pageNo, @PathVariable int pageSize) {
-        return articleService.getAllArticles(pageNo, pageSize);
+    @GetMapping("/articles")
+    public List<ArticleDTO> getArticles () {
+        return articleService.getAllArticles();
     }
 
     @GetMapping("/articles/{id}")

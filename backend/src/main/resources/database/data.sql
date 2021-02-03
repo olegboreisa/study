@@ -16,6 +16,4 @@ INSERT INTO article (id, creation_date, title, text, category_id) VALUES
 
 (5, '2000-01-01', 'What is diffusion?', 'Diffusion is the movement of a substance from an area of high concentration to an area of low concentration.!', 1),
 
-(6, '1910-04-04', 'What diffusion happens in coffee?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1),
-
-(7, '2022-12-12', 'What is covalent bond?', 'A covalent bond is a chemical bond that involves the sharing of electron pairs between atoms. These electron pairs are known as shared pairs or bonding pairs, and the stable balance of attractive and repulsive forces between atoms, when they share electrons, is known as covalent bonding', 2);
+(6, '1910-04-04', 'What diffusion happens in coffee?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1);

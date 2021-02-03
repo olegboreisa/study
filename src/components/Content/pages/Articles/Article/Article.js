@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from "react-router";
-import classes from './SingleArtById.module.css'
+import classes from './Article.module.css'
 import axios from 'axios'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWrench, faTrash} from "@fortawesome/free-solid-svg-icons";
@@ -40,7 +40,7 @@ export default () => {
                 <div>{article.text}</div>
                 <div>{article.date}</div>
 
-                <Link to={`/api/articles/update/${article.id}`} article={article}>
+                <Link to={`/api/articles/update/${article.id}`}>
                     <FontAwesomeIcon icon={faWrench} size={"3x"}/>
                 </Link>
 

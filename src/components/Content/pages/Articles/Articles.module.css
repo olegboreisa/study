@@ -11,7 +11,6 @@
 
 .column {
     text-align: justify;
-    margin: 20px;
 }
 .link {
     color: black;
@@ -22,6 +21,7 @@
 
 .articles {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -34,4 +34,8 @@
 
 .addArticle:hover {
     color: red;
+}
+
+.addButton {
+
 }
