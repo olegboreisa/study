@@ -14,20 +14,9 @@ import java.text.ParseException;
 public class BeanConfig {
 
     @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
-    @Bean
     ModelMapper modelMapper() {
         return new ModelMapper();
     }
-
-    @Bean
-    ObjectMapper objectMapper() {
-        return new ObjectMapper();
-    }
-
 
     /**
 

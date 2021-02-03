@@ -34,7 +34,7 @@ export default () => {
             <div className={classes.articles}>
                 {
                     articles.map(article => (
-                        <NavLink to={'/categories' + article.id} className={classes.link}>
+                        <NavLink to={'api/articles/' + article.id} className={classes.link}>
                             <div className={classes.column}>
                                 <Window picture={one} title={article.title} />
                             </div>

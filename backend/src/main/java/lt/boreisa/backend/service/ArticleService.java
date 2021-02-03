@@ -1,9 +1,7 @@
 package lt.boreisa.backend.service;
 
 import lt.boreisa.backend.model.Article;
-import lt.boreisa.backend.model.Category;
 import lt.boreisa.backend.model.DTO.ArticleDTO;
-import lt.boreisa.backend.model.DTO.CategoryDTO;
 import lt.boreisa.backend.repository.ArticleRepo;
 import lt.boreisa.backend.repository.CategoryRepo;
 import org.modelmapper.ModelMapper;
@@ -43,8 +41,6 @@ public class ArticleService {
         return article;
     }
 
-
-
     public List<ArticleDTO> getAllArticles(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
         return ((Page<Article>) articleRepo
@@ -54,11 +50,19 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 
-    public Article saveArticle (ArticleDTO articleDto) {
+    public ArticleDTO getSingleArticle (Long id) {
+        Article article = articleRepo.findById(id).orElseThrow();
+        ArticleDTO articleDTO = convertToArticleDTO(article);
+        return articleDTO;
+    }
+
+    public void saveArticle (ArticleDTO articleDto) {
         Article article = convertToArticle(articleDto);
-        return articleRepo.save(article);
+        articleRepo.save(article);
     }
 }
+
+
 
 /**
  * Loose

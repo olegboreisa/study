@@ -22,7 +22,6 @@ const Sidebar = () => {
             })
     }
 
-
     const deleteCategory = (id) => {
         axios.delete(`api/categories/delete/${id}`)
             .then(() => loadCategories)
