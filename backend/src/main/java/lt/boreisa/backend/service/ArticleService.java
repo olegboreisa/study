@@ -64,6 +64,14 @@ public class ArticleService {
     public void deleteSingleArticle (Long id){
         articleRepo.deleteById(id);
     }
+
+    public void updateSingleArticle(Long id, ArticleDTO articleDTO) {
+        Article article = articleRepo.findById(id).orElseThrow();
+        article.setTitle(articleDTO.getTitle());
+        article.setText(articleDTO.getText());
+        article.setCategory(categoryRepo.findById(articleDTO.getCategory().getId()).orElseThrow());
+        articleRepo.save(article);
+    }
 }
 
 

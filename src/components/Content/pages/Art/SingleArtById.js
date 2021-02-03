@@ -40,10 +40,9 @@ export default () => {
                 <div>{article.text}</div>
                 <div>{article.date}</div>
 
-                <Link to={`/articles/update/${id}`}>
+                <Link to={`/api/articles/update/${article.id}`} article={article}>
                     <FontAwesomeIcon icon={faWrench} size={"3x"}/>
                 </Link>
-
 
                 <FontAwesomeIcon icon={faTrash} size={"3x"}
                                  onClick={() => deleteArticleHandler(article.id)}/>

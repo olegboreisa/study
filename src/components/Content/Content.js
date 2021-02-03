@@ -6,11 +6,13 @@ import Categories from './pages/Categories/Categories'
 import CategoryAdd from "./pages/Categories/CategoryAdd";
 import ArticleAdd from "./ArticleAddTable/ArticleAdd";
 import SingleArtById from "./pages/Art/SingleArtById";
+import UpdateArt from "./ArticleAddTable/UpdateArt";
 
 
 const Content = () => (
 
         <Switch>
+            <Route path="/api/articles/update/:id" component={UpdateArt} />
             <Route path="/about" component={About} />
             <Route path="/contacts" component={Contacts} />
             <Route path="/categories/add" component={CategoryAdd} />
