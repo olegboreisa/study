@@ -26,11 +26,20 @@ export default () => {
             onSubmit={handleOnSubmit}>
             {(props) => (
                 <>
-                    <div> Please enter the the following: </div>
-                    <Form>
-                        <Field as="textarea" type="text" name="title" placeholder="Article Title"/>
 
-                        <Field as="textarea" type="text" name="text" placeholder="Article Body"/>
+                    <Form>
+                        <div> Please enter the the following: </div>
+
+                        <div>
+                            <label htmlFor="title">Title:</label>
+                            <Field as="textarea" type="text" name="title" placeholder="Article Title"/>
+                        </div>
+
+                        <div>
+                            <label htmlFor="text">Body:</label>
+                            <Field as="textarea" type="text" name="text" placeholder="Article Body"/>
+                        </div>
+
                         <button type="submit">Submit</button>
                     </Form>
                 </>
