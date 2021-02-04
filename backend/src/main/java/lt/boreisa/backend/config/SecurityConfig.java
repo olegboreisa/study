@@ -3,6 +3,7 @@ package lt.boreisa.backend.config;
 import lt.boreisa.backend.security.JwtAuthenticationFilter;
 import lt.boreisa.backend.security.JwtAuthorizationFilter;
 import lt.boreisa.backend.security.JwtProvider;
+import lt.boreisa.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,10 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userService;
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        // [ČIA FORMUOJAM SECURITY FILTRUS]
 
         http
                 .csrf().disable()

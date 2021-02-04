@@ -2,13 +2,13 @@ package lt.boreisa.backend.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import lt.boreisa.backend.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
