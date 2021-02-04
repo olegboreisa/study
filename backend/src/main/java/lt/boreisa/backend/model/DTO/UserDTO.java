@@ -1,10 +1,14 @@
 package lt.boreisa.backend.model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 import lt.boreisa.backend.model.User;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Data
+@JsonIgnoreProperties
 public class UserDTO {
 
     private Long id;

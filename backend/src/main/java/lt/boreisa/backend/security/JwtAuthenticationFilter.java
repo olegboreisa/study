@@ -8,6 +8,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -57,6 +58,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
 
+        // [ATTACHING AUTHENTICATED USER INTO SECURITY CONTEXT TO CALL CONTROLLER]
+        SecurityContextHolder.getContext().setAuthentication(authResult);
+
         // [CREATING AND CASTING USER FROM APPLICATION.PROPERTIES]
         User user = (User) authResult.getPrincipal();
 
@@ -65,5 +69,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         // [AUTHORIZATION TYPE BEARER BECAUSE WE RETURN TOKEN]
         response.addHeader(AUTHORIZATION_HEADER, AUTHORIZATION_HEADER_PREFIX + jwtToken);
+
+        // [WE DO NOT WANT TO STOP THE SECURITY PROCESS THEREFORE TO CONTINUE CHAIN]
+        chain.doFilter(request, response);
     }
 }
