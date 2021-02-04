@@ -35,16 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                 .authorizeRequests()
-//                    .antMatchers("/login").permitAll()
+                    .antMatchers("/login").permitAll()
                     .anyRequest().permitAll()
                     .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider)) // [ATLIEKA AUTENTIFIKACIJĄ 1:57:00]
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
 
-
     }
-
-    // [INSTEAD OF .login DEFAULT CONFIGURATION THAT WE USED IN PREVIOUS PROJECT BECAUSE BACK DOES NOT KNOW ABOUT FRONT AND VICE VERSA]
 
     @Bean
     @Override
