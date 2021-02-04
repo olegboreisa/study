@@ -2,17 +2,24 @@ import React from 'react'
 import {Field, Form, Formik} from 'formik'
 import { getLogin } from '../../../../api/UserApi'
 import {useHistory} from "react-router";
+import {useDispatch} from "react-redux";
+import {setUserData, setJwt} from "../../../../store/Slices/UserSlice";
 
 export default () => {
 
     const history = useHistory() // [React Hook - History -> is an Object that has some URL Navigation Options]
 
+    const dispatch = useDispatch() // [Dispatch Actions and Data]
+
     const postLogin = (formValues, formikHelpers) => {
         formikHelpers.setSubmitting(true)
 
         getLogin(formValues)
-            .then(
-                () => history.push('/')
+            .then(({data, headers: {authorization}}) => {
+                dispatch(setUserData(data)) // [ {type: 'user/setUserData', payload: data}
+                dispatch(setJwt(authorization))
+                history.push('/')
+                }
             )
             .finally(
                 () => formikHelpers.setSubmitting(false)
