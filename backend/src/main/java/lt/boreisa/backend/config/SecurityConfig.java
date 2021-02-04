@@ -36,11 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                 .authorizeRequests()
-                    .antMatchers("/login").permitAll()
-                    .anyRequest().permitAll()
-                    .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
+//                    .antMatchers("/login").permitAll()
+                    .anyRequest().permitAll();
+//                    .and()
+////                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))
+////                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
     }
 
     @Bean
