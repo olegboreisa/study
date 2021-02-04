@@ -17,3 +17,17 @@ INSERT INTO article (id, creation_date, title, text, category_id) VALUES
 (5, '2000-01-01', 'What is diffusion?', 'Diffusion is the movement of a substance from an area of high concentration to an area of low concentration.!', 1),
 
 (6, '1910-04-04', 'What diffusion happens in coffee?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1);
+
+
+INSERT INTO USER (id, password, username) VALUES
+(1, '{bcrypt}$2y$12$fQ32bokGVwHwn8PvC7Q/ROZEEMKuX97epHJlva10Px/ABEPWd2due', 'user'),
+(2, '{bcrypt}$2y$12$zroYgqeBBP1CE9aVnVw7bed4FIzjeiIbWO8PY9N3aGi4it12v5KQq', 'admin');
+
+INSERT INTO ROLE (id, role_name) VALUES
+(1, 'USER'),
+(2, 'ADMIN');
+
+INSERT INTO USER_ROLES (user_id, role_id) VALUES
+(1, 1),
+(2, 2),
+(2, 1);
