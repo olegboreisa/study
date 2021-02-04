@@ -1,8 +1,24 @@
 import React from 'react'
 import {Field, Form, Formik} from 'formik'
 
-export default () => (
-    <Formik>
+export default () => {
+
+    const postLogin = (formValues, formikHelpers) => {
+        formikHelpers.setSubmitting(true)
+        //Post Data
+        formikHelpers.setSubmitting(false)
+    }
+
+    return (
+
+    <Formik
+        initialValues={{
+            username: '',
+            password: ''
+        }}
+        onSubmit={postLogin}
+    >
+
         {(props) => (
             <Form>
                 <div>
@@ -14,9 +30,9 @@ export default () => (
                     <Field name="password" id="password" type="password" placeholder="Please enter your password" />
                 </div>
 
-                <button type="submit">Login</button>
+                <button type="submit" disabled={props.isSubmitting}>Login</button>
             </Form>
         )}
     </Formik>
-)
+)}
 
