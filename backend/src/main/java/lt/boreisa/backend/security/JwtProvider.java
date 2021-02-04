@@ -1,14 +1,21 @@
 package lt.boreisa.backend.security;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,6 +45,22 @@ public class JwtProvider {
     }
 
     public Authentication getAuthentication(String jwt) {
+        // [PARSE AND VALIDATE JWT]
+        Jwt<?, Claims> parsedJwt = Jwts.parserBuilder()
+                .setSigningKey(secret) // [TO CHECK SIGNATURE VALIDITY]
+                .build()
+                .parseClaimsJwt(jwt);
+
+        String username = parsedJwt.getBody().getSubject();
+        List<GrantedAuthority> roles = ((List<String>) parsedJwt.getBody().get("roles")).stream()
+                .map(roleString -> new SimpleGrantedAuthority(roleString))
+                .collect(Collectors.toList()); // [1:49:00]
+
+        // [CREATE AUTHENTICATION OBJECT]
+        if (StringUtils.isNotEmpty(username)) {
+            return new UsernamePasswordAuthenticationToken(username, roles);
+        }
+
         return null;
     }
 }

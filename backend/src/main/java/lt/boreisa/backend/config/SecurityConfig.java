@@ -1,6 +1,7 @@
 package lt.boreisa.backend.config;
 
 import lt.boreisa.backend.security.JwtAuthenticationFilter;
+import lt.boreisa.backend.security.JwtAuthorizationFilter;
 import lt.boreisa.backend.security.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                    .antMatchers("/login").permitAll()
                     .anyRequest().permitAll()
                     .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider)); // [ATLIEKA AUTENTIFIKACIJĄ 1:57:00]
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider)) // [ATLIEKA AUTENTIFIKACIJĄ 1:57:00]
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
 
 
     }
