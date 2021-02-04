@@ -1,12 +1,23 @@
 import React from 'react'
 import {Field, Form, Formik} from 'formik'
+import { getLogin } from '../../../../api/UserApi'
+import {useHistory} from "react-router";
 
 export default () => {
 
+    const history = useHistory() // [React Hook - History -> is an Object that has some URL Navigation Options]
+
     const postLogin = (formValues, formikHelpers) => {
         formikHelpers.setSubmitting(true)
-        //Post Data
-        formikHelpers.setSubmitting(false)
+
+        getLogin(formValues)
+            .then(
+                () => history.push('/')
+            )
+            .finally(
+                () => formikHelpers.setSubmitting(false)
+            )
+
     }
 
     return (
