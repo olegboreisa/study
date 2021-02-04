@@ -11,9 +11,8 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faUserGraduate} size={"4x"}/>
 
             <div className={classes.item2}>
-                <NavLink to={"/"} className={classes.link}>Home</NavLink>
-                <NavLink to={"/about"} className={classes.link}>About</NavLink>
-                <NavLink to={"/contacts"} className={classes.link}>Contacts</NavLink>
+                <NavLink to={"/home"} className={classes.link}>Home</NavLink>
+                <NavLink to={"/articles"} className={classes.link}>Articles</NavLink>
                 <NavLink to={"/login"} className={classes.link}>Login</NavLink>
             </div>
 

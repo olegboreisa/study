@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class JwtProvider {
 
     @Value("#{${security.jwt.expire-in-mins} * 60000}")
-    private long validityMillis;
+    private long validityInMillis;
 
     @Value("${security.jwt.secret-key}")
     private byte[] secret;
@@ -34,7 +34,7 @@ public class JwtProvider {
                 .setAudience("Article-Front") //[CONSUMER FRONT]
                 .setIssuedAt(now)
                 .setSubject(user.getUsername()) // [WHO CARRIES BUILDED TOKEN]
-                .setExpiration(new Date(now.getTime() + validityMillis))
+                .setExpiration(new Date(now.getTime() + validityInMillis))
                 .claim("roles", user.getAuthorities().stream()
                                         .map(grantedAuthority -> grantedAuthority.getAuthority())
                                         .collect(Collectors.toList())) // [CUSTOM OBJECTS THAT WE WANT TO ADD .. IN HEADERS..?]

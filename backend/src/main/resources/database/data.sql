@@ -20,8 +20,8 @@ INSERT INTO article (id, creation_date, title, text, category_id) VALUES
 
 
 INSERT INTO USER (id, password, username) VALUES
-(1, '{bcrypt}$2y$12$6C5T4j7HlR8CaokuYbtvMuKU5GAHJxVmq7v9oQonieq5jTAtEiRuG', 'user'),
-(2, '{bcrypt}$2y$12$6C5T4j7HlR8CaokuYbtvMuKU5GAHJxVmq7v9oQonieq5jTAtEiRuG', 'admin');
+(1, '{bcrypt}$2y$12$WL2JkfM0YPHgFKAuiC/ejuoAFQFlw7pHWYCpVtgqFISzpjfYMuyo6', 'user'),
+(2, '{bcrypt}$2y$12$WL2JkfM0YPHgFKAuiC/ejuoAFQFlw7pHWYCpVtgqFISzpjfYMuyo6', 'admin');
 
 INSERT INTO ROLE (id, role_name) VALUES
 (1, 'USER'),

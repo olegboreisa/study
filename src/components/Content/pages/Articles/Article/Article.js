@@ -1,33 +1,32 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from "react-router";
 import classes from './Article.module.css'
-import axios from 'axios'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWrench, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
+import {deleteArticle, getArticle} from "../../../../../api/ArticleApi";
 
 export default () => {
 
     const [article, setArticle] = useState({})
-    let { id } = useParams()
+    const { id } = useParams()
+    console.log('ID', typeof id)
 
     useEffect(() => {
-        loadArticle()
-    }, [])
-
-    const loadArticle = () => {
-            axios.get(`/api/articles/${id}`)
+        getArticle(id)
                 .then(response => {
                         setArticle(response.data)
                 })
                 .catch(error => {
                     console.log(error)
                 })
-    }
+    }, [])
 
     const deleteArticleHandler = (id) => {
-        axios.delete(`/api/articles/delete/${id}`)
-            .then(() => loadArticle)
+        deleteArticle(id)
+            .then(res => {
+                console.log(res)
+            })
             .catch(error => {
                 console.log(error)
             })

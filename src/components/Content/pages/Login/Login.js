@@ -18,13 +18,13 @@ export default () => {
             .then(({data, headers: {authorization}}) => {
                 dispatch(setUserData(data)) // [ {type: 'user/setUserData', payload: data}
                 dispatch(setJwt(authorization))
-                history.push('/')
+
+                history.push('/home')
                 }
             )
             .finally(
                 () => formikHelpers.setSubmitting(false)
             )
-
     }
 
     return (

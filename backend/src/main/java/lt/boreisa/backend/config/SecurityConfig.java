@@ -26,7 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userService;
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -36,11 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                 .authorizeRequests()
-//                    .antMatchers("api/login/**").permitAll()
-                    .anyRequest().permitAll();
-//                    .and()
-////                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))
-////                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
+                    .antMatchers("/login").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
     }
 
     @Bean

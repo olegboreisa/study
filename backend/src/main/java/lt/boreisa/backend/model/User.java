@@ -37,14 +37,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    @NotBlank
-    @Size(min = 3, max = 200)
     private String username;
 
-    @Column(nullable = false)
-    @Size(min = 3)
-    @NotBlank
     private String password;
 
     @ManyToMany

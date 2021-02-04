@@ -11,7 +11,6 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
 public class ArticleController {
 
     @Autowired

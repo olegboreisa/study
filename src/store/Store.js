@@ -1,7 +1,6 @@
 import React from 'react';
 import {configureStore} from "@reduxjs/toolkit";
 import user from './Slices/UserSlice'
-import {logger} from "redux-logger";
 
 export const createStore = (initialState) => {
 
@@ -9,9 +8,7 @@ export const createStore = (initialState) => {
         reducer: {
             user
         },
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
     })
-
     return store
 }
 

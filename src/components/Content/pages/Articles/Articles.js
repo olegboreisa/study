@@ -3,10 +3,10 @@ import { getArticles } from '../../../../api/ArticleApi'
 import classes from "./Articles.module.css"
 import { Link } from "react-router-dom"
 import ArticleBox from "../../ArticleBox"
-import one from "../../assets/pics/one.jpg"
 import {faPlusCircle} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { CircularProgress } from '@material-ui/core';
+import Sidebar from "../../../Sidebar/Sidebar";
 
 export default () => {
 
@@ -18,6 +18,8 @@ export default () => {
         getArticles()
             .then(res => {
                 setArticles(res.data)
+                console.log(res)
+
             })
             .finally(() => {
                 setLoading(false)
@@ -25,6 +27,9 @@ export default () => {
     }, [])
 
     return (
+
+        <>
+        <Sidebar />
         <div className={classes.container}>
 
                 {
@@ -35,8 +40,9 @@ export default () => {
                             {
                                 articles.map(article => (
                                     <div className={classes.column}>
-                                        <Link to={'api/articles/' + article.id} className={classes.link}>
-                                            <ArticleBox picture={one} title={article.title} />
+                                        <Link to={`/articles/${article.id}`} className={classes.link}>
+
+                                            <ArticleBox title={article.title} />
                                         </Link>
                                     </div>
                                 ))
@@ -49,5 +55,6 @@ export default () => {
                             </div>
                 }
         </div>
+        </>
     )
 }
