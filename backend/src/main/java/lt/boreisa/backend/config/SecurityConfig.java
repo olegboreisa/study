@@ -19,6 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        // [ČIA FORMUOJAM SECURITY FILTRUS]
+
         http
                 .csrf().disable()
                 .sessionManagement()

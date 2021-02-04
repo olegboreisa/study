@@ -2,8 +2,9 @@ package lt.boreisa.backend.security;
 
 import io.jsonwebtoken.Jwt;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -25,15 +26,30 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     // [READ JWT TOKEN THAT COMES WITH HTTP HEADER AND PUT IT INTO SPRING SECURITY]
+    // [JwtAuthorization Filter TAKE A JWT TOKEN AND WANTS TO DO SOMETHING WITH IT]
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER);
+        String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER); //
+
 
         if (StringUtils.isNoneEmpty(authorizationHeader) && authorizationHeader.startsWith(AUTHORIZATION_HEADER_PREFIX)) {
-            String jwt = authorizationHeader.replace(AUTHORIZATION_HEADER_PREFIX, ""); //[DELETING JWT TOKEN PREFIX]
-            Authentication authentication = jwtProvider.getAuthentication(jwt);
-        }
+            String jwt = authorizationHeader.replace(AUTHORIZATION_HEADER_PREFIX, "");
 
+            Authentication authentication = jwtProvider.getAuthentication(jwt);
+
+            if (authentication == null) {
+                chain.doFilter(request, response);
+                return;
+            }
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            chain.doFilter(request, response);
+        }
     }
 }
+
+// (33) [IŠSITRAUKIAM AUTORIZACIJOS HEADERĮ]
+// (36) [PATIKRINIMAS AR JIS NETUŠČIAS IR PRASIDEDA SU PREFIXSU]
+// (37) [DELETING JWT TOKEN PREFIX - SUTRUMPIMAS JWT IKI MUMS REIKALINGŲ DUOMENŲ]
+// (39) [ATIDUODAM JWT Į AUTENTIFICIKACIJOS PROVIDERĮ - NAUDOJAM. TAI YRA OBJEKTAS, KURĮ VĖLIAU NAUDOJAM IR SPRINGE - SECURITY KONTEKSTE]
