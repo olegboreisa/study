@@ -5,30 +5,33 @@ import Sidebar from "./components/Sidebar/Sidebar"
 import Content from "./components/Content/Content"
 import Footer from "./components/Footer/Footer"
 import classes from './App.module.css'
+import {Provider} from "react-redux";
+import store from './store/Store'
 
 function App() {
   return (
-      <div className={classes.container}>
-          <BrowserRouter>
+      <Provider store={store}>
+          <div className={classes.container}>
+              <BrowserRouter>
 
-              <div className={classes.navbar}>
-                  <Navbar />
-              </div>
+                  <div className={classes.navbar}>
+                      <Navbar />
+                  </div>
 
-              <div className={classes.main}>
-                  <Sidebar />
-                  <Content />
-              </div>
+                  <div className={classes.main}>
+                      <Sidebar />
+                      <Content />
+                  </div>
 
-               <div className={classes.footer}>
-                   <Footer />
-               </div>
+                  <div className={classes.footer}>
+                      <Footer />
+                  </div>
 
-        </BrowserRouter>
-      </div>
+              </BrowserRouter>
+          </div>
+      </Provider>
+
   );
 }
-
-
 
 export default App;

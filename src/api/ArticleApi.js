@@ -1,4 +1,4 @@
-import HTTP from './main'
+import HTTP from './Main'
 
 export const getArticles = () => HTTP.get(`/articles`)
 

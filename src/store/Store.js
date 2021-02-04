@@ -3,7 +3,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import user from './Slices/UserSlice'
 import {logger} from "redux-logger";
 
-export default (initialState) => {
+export const createStore = (initialState) => {
 
     const store = configureStore({
         reducer: {
@@ -14,3 +14,6 @@ export default (initialState) => {
 
     return store
 }
+
+const store = createStore()
+export default store
