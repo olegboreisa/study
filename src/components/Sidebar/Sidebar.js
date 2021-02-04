@@ -1,30 +1,28 @@
 import React, {useEffect, useState} from 'react'
 import classes from './Sidebar.module.css'
 import {Link} from "react-router-dom";
-import axios from 'axios';
 import {faPlus, faMinus} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { getCategories, deleteCategory } from '../../api/CategoryApi'
 
 const Sidebar = () => {
     const [categories, setCategories] = useState ([])
 
     useEffect(() => {
-        loadCategories()
-    }, [])
-
-    const loadCategories = () => {
-        axios.get('/api/categories')
-            .then(response => {
-                setCategories(response.data)
+        getCategories()
+            .then(res => {
+                setCategories(res.data)
             })
             .catch(error => {
                 console.log(error)
             })
-    }
+    }, [])
 
-    const deleteCategory = (id) => {
-        axios.delete(`api/categories/delete/${id}`)
-            .then(() => loadCategories)
+    const deleteCategoryHandler = (id) => {
+        deleteCategory(id)
+            .then(res => {
+                console.log(res)
+            })
             .catch(error => {
                 console.log(error)
             })
@@ -40,7 +38,7 @@ const Sidebar = () => {
 
                             <Link to={cat.category} className={classes.link}>{cat.category} </Link>
 
-                            <FontAwesomeIcon icon={faMinus} size={"1x"} onClick={() => deleteCategory(cat.id)} className={classes.minus}/>
+                            <FontAwesomeIcon icon={faMinus} size={"1x"} onClick={() => deleteCategoryHandler(cat.id)} className={classes.minus}/>
 
                         </div>
                     ))
