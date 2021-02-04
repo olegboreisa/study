@@ -1,9 +1,6 @@
 package lt.boreisa.backend.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,10 +43,10 @@ public class JwtProvider {
 
     public Authentication getAuthentication(String jwt) {
         // [PARSE AND VALIDATE JWT]
-        Jwt<?, Claims> parsedJwt = Jwts.parserBuilder()
+        Jws<Claims> parsedJwt = Jwts.parserBuilder()
                 .setSigningKey(secret) // [TO CHECK SIGNATURE VALIDITY]
                 .build()
-                .parseClaimsJwt(jwt);
+                .parseClaimsJws(jwt);
 
         String username = parsedJwt.getBody().getSubject();
         List<GrantedAuthority> roles = ((List<String>) parsedJwt.getBody().get("roles")).stream()
@@ -58,7 +55,7 @@ public class JwtProvider {
 
         // [CREATE AUTHENTICATION OBJECT]
         if (StringUtils.isNotEmpty(username)) {
-            return new UsernamePasswordAuthenticationToken(username, roles);
+            return new UsernamePasswordAuthenticationToken(username, null, roles);
         }
 
         return null;
