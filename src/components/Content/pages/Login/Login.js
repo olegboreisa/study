@@ -34,8 +34,7 @@ export default () => {
             username: '',
             password: ''
         }}
-        onSubmit={postLogin}
-    >
+        onSubmit={postLogin}>
 
         {(props) => (
             <Form>
