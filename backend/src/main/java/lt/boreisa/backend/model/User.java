@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.*;
@@ -31,11 +32,11 @@ public class User implements UserDetails {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
-    @Length(min = 4)
+    @Length(min = 4, max = 9)
     @Column(name = "username")
     private String username;
 
-    @Length(min = 4)
+    @NotBlank
     @Column(name = "password")
     private String password;
 

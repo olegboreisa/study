@@ -19,6 +19,12 @@
     "matchPass": "Repeat Password",
     "country": "Country",
     "select": "Select..",
-    "phone": "Phone"
+    "phone": "Phone",
+    "userV": "Required Field!",
+    "charMin": "Field must be at least 4 characters!",
+    "charMax": "Field cannot exceed more than 9 characters!",
+    "noMatch": "Passwords do not match!",
+    "phoneCharMin": "Phone numbest must contain at least 9 digits!",
+    "phoneCharMax": "Phone numbest cannot exceed more than 13 digits!"
   }
 }

@@ -1,15 +1,15 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import {Field, Form, Formik} from "formik";
-import {useHistory} from "react-router";
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import {ErrorMessage, Field, Form, Formik} from "formik"
+import {useHistory} from "react-router"
 import { register } from '../../../../api/UserApi'
-import PropsState from "../../../../PropsState";
-import {useTranslation} from "react-i18next";
-
+import PropsState from "../../../../PropsState"
+import {useTranslation} from "react-i18next"
+import * as Yup from "yup"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,8 +29,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default () => {
-    const history = useHistory()
     const { t } = useTranslation("regForm")
+    const history = useHistory()
+
+    const validationSchema = Yup.object().shape({
+        username: Yup.string()
+            .required(`${t('userV')}`)
+            .min(4, `${t('charMin')}`)
+            .max(9, `${t('charMax')}`),
+        password: Yup.string()
+            .required(`${t('userV')}`)
+            .min(4, `${t('charMin')}`)
+            .max(9, `${t('charMax')}`),
+        matchPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], `${t('noMatch')}`),
+        country: Yup.string()
+            .required(`${t('userV')}`),
+        phoneNum: Yup.string()
+            .required(`${t('userV')}`)
+            .matches(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+            .min(10, `${t('phoneCharMin')}`)
+            .max(13, `${t('phoneCharMax')}`)
+    })
 
     const signUp = (formValues, formikHelpers) => {
         formikHelpers.setSubmitting(true)
@@ -51,6 +71,7 @@ export default () => {
             phoneNum: ''
         }}
         onSubmit={signUp}>
+        validationSchema={validationSchema}>
             {(props) => (
                 <>
                 <PropsState {...props} />
@@ -67,6 +88,7 @@ export default () => {
                                     name="username"
                                     type="text"
                                 />
+                                <ErrorMessage name="username" component="small" className="form-text text-danger"/>
                             </Grid>
                             <Grid>
                                 <label htmlFor="password">{t("pass")}</label>
@@ -75,6 +97,7 @@ export default () => {
                                     name="password"
                                     type="password"
                                 />
+                                <ErrorMessage name="password" component="small" className="form-text text-danger"/>
                             </Grid>
                             <Grid>
                                 <label htmlFor="matchPassword">{t("matchPass")}</label>
@@ -83,6 +106,7 @@ export default () => {
                                     name="matchPassword"
                                     type="password"
                                 />
+                                <ErrorMessage name="matchPassword" component="small" className="form-text text-danger"/>
                             </Grid>
                             <Grid>
                                 <label htmlFor="country">{t("country")}</label>
@@ -95,6 +119,7 @@ export default () => {
                                     <option value="United States">United States</option>
                                     <option value="Russia">Russia</option>
                                 </Field>
+                                <ErrorMessage name="country" component="small" className="form-text text-danger"/>
                             </Grid>
                             <Grid>
                                 <label htmlFor="phoneNum">{t("phone")}</label>
@@ -103,6 +128,7 @@ export default () => {
                                     name="phoneNum"
                                     type="text"
                                 />
+                                <ErrorMessage name="phoneNum" component="small" className="form-text text-danger"/>
                             </Grid>
                         </Grid>
                         <Button

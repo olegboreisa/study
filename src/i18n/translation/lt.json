@@ -19,6 +19,12 @@
     "matchPass": "Pakartoti Slaptažodį",
     "country": "Šalis",
     "select": "Pasirinkti..",
-    "phone": "Telefonas"
+    "phone": "Telefonas",
+    "userV": "Būtinas laukas!",
+    "charMin": "Turi būti bent 4 simboliai!",
+    "charMax": "Negali būti daugiau nei 9 simboliai!",
+    "noMatch": "Slaptažodžiai nesutampa!",
+    "phoneCharMin": "Numeris turi būti bent 9 skaičiai!",
+    "phoneCharMax": "Numeris negali viršyti 12 skaičių!"
   }
 }
