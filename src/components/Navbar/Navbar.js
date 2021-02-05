@@ -5,41 +5,55 @@ import { faUserGraduate } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import { Button } from '@material-ui/core';
 import {removeJwt, removeUserData} from "../../store/Slices/UserSlice";
+import ltu from "../Content/assets/pics/lt.png"
+import usa from "../Content/assets/pics/usa.png"
 
 const Navbar = () => {
 
-    const { t } = useTranslation('navbar')
+    const { t, i18n } = useTranslation('navbar')
     const user = useSelector(state => state.user.userData)
     const dispatch = useDispatch() // [CALL REDUX USER ACTIONS]
-    console.log(user)
-
 
     const logout = () => {
         dispatch(removeUserData())
         dispatch(removeJwt())
-        console.log(user)
+    }
+
+    // [CHANGE LANGUAGE]
+    const languageHandler = (lang) => {
+        i18n.changeLanguage(lang).then(() =>
+        null)
     }
 
     return (
         <div className={classes.container}>
 
-            <FontAwesomeIcon icon={faUserGraduate} size={"4x"}/>
+            {
+                user === null ?
+                    (<div className={classes.login}>
+                        <FontAwesomeIcon icon={faUserGraduate} size={"4x"}/>
+                        <span className={classes.username}>{t('sign')}</span>
+                    </div>)
+                    :
+                    (<div className={classes.login}>
+                        <FontAwesomeIcon icon={faUserGraduate} size={"4x"} className={classes.active}/>
+                        <span className={classes.username}>{t('greetings')} {user.username}{'!'}</span>
+                    </div>)
+            }
+
 
             <div className={classes.item2}>
                 <NavLink to={"/home"} className={classes.link}>{t('home')}</NavLink>
                 <NavLink to={"/articles"} className={classes.link}>{t('articles')}</NavLink>
                 {
-                    !!user ?
-                        (
-                            <Link className={classes.link} component={Button} onClick={logout}>{t('logout')}</Link>
-                        )
+                    user === null ?
+                        (<NavLink to="/login" className={classes.link}>{t('login')}</NavLink>)
                         :
-                        (
-                            <NavLink to="/login" className={classes.link}>{t('login')}</NavLink>
-                        )
+                        (<Link className={classes.link} onClick={logout}>{t('logout')}</Link>)
                 }
+                <img src={ltu} className={classes.lang} onClick={() => languageHandler('lt')}/>
+                <img src={usa} className={classes.lang} onClick={() => languageHandler('en')}/>
             </div>
 
         </div>

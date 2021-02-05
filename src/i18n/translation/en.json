@@ -6,6 +6,8 @@
     "home": "Home",
     "articles": "Articles",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "greetings": "Welcome, ",
+    "sign": "Please, Sign In!"
   }
 }

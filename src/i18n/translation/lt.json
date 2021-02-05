@@ -3,9 +3,11 @@
     "home": "Namai!"
   },
   "navbar": {
-    "home": "Namai",
+    "home": "Pradinis",
     "articles": "Straipsniai",
     "login": "Prisijungti",
-    "logout": "Atsijungti"
+    "logout": "Atsijungti",
+    "greetings": "Sveiki, ",
+    "sign": "Prašau Prisijungti!"
   }
 }
