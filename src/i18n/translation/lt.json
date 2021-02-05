@@ -11,5 +11,14 @@
     "signIn": "Prašau Prisijungti!",
     "sign": "Prisijungti",
     "register": "Registruotis"
+  },
+  "regForm": {
+    "form": "Prašau užpildyti formą",
+    "username": "Slapyvardis",
+    "pass": "Slaptažodis",
+    "matchPass": "Pakartoti Slaptažodį",
+    "country": "Šalis",
+    "select": "Pasirinkti..",
+    "phone": "Telefonas"
   }
 }

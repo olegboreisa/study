@@ -11,5 +11,14 @@
     "signIn": "Please, Sign In!",
     "sign": "Sign In",
     "register": "Register"
+  },
+  "regForm": {
+    "form": "Please fill the form",
+    "username": "Username",
+    "pass": "Password",
+    "matchPass": "Repeat Password",
+    "country": "Country",
+    "select": "Select..",
+    "phone": "Phone"
   }
 }

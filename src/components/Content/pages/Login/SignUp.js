@@ -1,15 +1,14 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Field, Form, Formik} from "formik";
 import {useHistory} from "react-router";
 import { register } from '../../../../api/UserApi'
-import Checkbox from "@material-ui/core/Checkbox";
 import PropsState from "../../../../PropsState";
+import {useTranslation} from "react-i18next";
 
 
 
@@ -31,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
     const history = useHistory()
+    const { t } = useTranslation("regForm")
 
     const signUp = (formValues, formikHelpers) => {
         formikHelpers.setSubmitting(true)
@@ -57,11 +57,11 @@ export default () => {
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
-                    <p>Please Fill The Following</p>
+                    <p>{t('form')}</p>
                     <Form className={classes.form} noValidate>
                         <Grid>
                             <Grid>
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="username">{t("username")}</label>
                                 <Field
                                     id="username"
                                     name="username"
@@ -69,7 +69,7 @@ export default () => {
                                 />
                             </Grid>
                             <Grid>
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">{t("pass")}</label>
                                 <Field
                                     id="password"
                                     name="password"
@@ -77,7 +77,7 @@ export default () => {
                                 />
                             </Grid>
                             <Grid>
-                                <label htmlFor="matchPassword">Match Password</label>
+                                <label htmlFor="matchPassword">{t("matchPass")}</label>
                                 <Field
                                     id="matchPassword"
                                     name="matchPassword"
@@ -85,19 +85,19 @@ export default () => {
                                 />
                             </Grid>
                             <Grid>
-                                <label htmlFor="country">Country</label>
+                                <label htmlFor="country">{t("country")}</label>
                                 <Field
                                     id="country"
                                     name="country"
                                     as="select">
-                                    <option value="">Select</option>
-                                    <option value="LTU">Lithuania</option>
-                                    <option value="US">United States</option>
-                                    <option value="RU">Russia</option>
+                                    <option value="">{t("select")}</option>
+                                    <option value="Lithuania">Lithuania</option>
+                                    <option value="United States">United States</option>
+                                    <option value="Russia">Russia</option>
                                 </Field>
                             </Grid>
                             <Grid>
-                                <label htmlFor="phoneNum">Phone</label>
+                                <label htmlFor="phoneNum">{t("phone")}</label>
                                 <Field
                                     id="phoneNum"
                                     name="phoneNum"
