@@ -1,25 +1,28 @@
-import i18n from 'i18next'
-import { initReactI18next } from "react-i18next"
-import Backend from 'i18next-xhr-backend'
-import LanguageDetector from 'i18next-browser-languagedetector'
+import i18next from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import languageDetector from 'i18next-browser-languagedetector'
 
-const languages = ['en', 'lt']
+import en from './translation/en.json'
+import lt from './translation/lt.json'
 
-i18n
-    // [LOAD TRANSLATIONS]
-    .use(Backend)
-    // [DETECT USER LANGUAGE]
-    .use(LanguageDetector)
-    // [PASS THE i18n INSTANCE TO react-i18next]
+i18next
+    .use(languageDetector)
     .use(initReactI18next)
-    // [INIT i18next]
     .init({
+        resources: {
+            lt,
+            en
+        },
+        load: "languageOnly",
+        ns: ['common'],
+        defaultNS: 'common',
         fallbackLng: 'en',
-        debug:true,
-
+        whitelist: ['lt', 'en'],
+        debug: true,
         interpolation: {
             escapeValue: false
         }
-    })
+    });
 
-export default i18n
+
+export default i18next

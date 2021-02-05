@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
-    "@reduxjs/toolkit": "^1.5.0"
+    "@reduxjs/toolkit": "^1.5.0",
+    "i18next-http-backend": "^1.1.0"
   }
 }
