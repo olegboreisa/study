@@ -5,9 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Formik} from "formik";
+import {Field, Form, Formik} from "formik";
 import {useHistory} from "react-router";
 import { register } from '../../../../api/UserApi'
+import Checkbox from "@material-ui/core/Checkbox";
+import PropsState from "../../../../PropsState";
 
 
 
@@ -18,12 +20,12 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
     },
-    form: {
+    Form: {
         width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(3)
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, 2)
     },
 }));
 
@@ -42,67 +44,69 @@ export default () => {
     return (
         <Formik
         initialValues={{
-
+            username: '',
+            password: '',
+            matchPassword: '',
+            country: '',
+            phoneNum: ''
         }}
         onSubmit={signUp}>
-
             {(props) => (
+                <>
+                <PropsState {...props} />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
                     <p>Please Fill The Following</p>
-                    <form className={classes.form} noValidate>
+                    <Form className={classes.form} noValidate>
                         <Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    autoComplete="fname"
-                                    name="firstName"
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="firstName"
-                                    label="First Name"
-                                    autoFocus
+                            <Grid>
+                                <label htmlFor="username">Username</label>
+                                <Field
+                                    id="username"
+                                    name="username"
+                                    type="text"
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="lastName"
-                                    label="Last Name"
-                                    name="lastName"
-                                    autoComplete="lname"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
+                            <Grid>
+                                <label htmlFor="password">Password</label>
+                                <Field
                                     id="password"
-                                    autoComplete="current-password"
+                                    name="password"
+                                    type="password"
+                                />
+                            </Grid>
+                            <Grid>
+                                <label htmlFor="matchPassword">Match Password</label>
+                                <Field
+                                    id="matchPassword"
+                                    name="matchPassword"
+                                    type="password"
+                                />
+                            </Grid>
+                            <Grid>
+                                <label htmlFor="country">Country</label>
+                                <Field
+                                    id="country"
+                                    name="country"
+                                    as="select">
+                                    <option value="">Select</option>
+                                    <option value="LTU">Lithuania</option>
+                                    <option value="US">United States</option>
+                                    <option value="RU">Russia</option>
+                                </Field>
+                            </Grid>
+                            <Grid>
+                                <label htmlFor="phoneNum">Phone</label>
+                                <Field
+                                    id="phoneNum"
+                                    name="phoneNum"
+                                    type="text"
                                 />
                             </Grid>
                         </Grid>
                         <Button
                             type="submit"
-                            fullWidth
                             variant="contained"
                             color="primary"
                             className={classes.submit}
@@ -110,9 +114,10 @@ export default () => {
                         >
                             Sign Up
                         </Button>
-                    </form>
+                    </Form>
                 </div>
             </Container>
+                </>
                 )}
         </Formik>
 

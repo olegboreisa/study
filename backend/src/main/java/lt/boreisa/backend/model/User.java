@@ -1,45 +1,54 @@
 package lt.boreisa.backend.model;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import lombok.*;
+import lt.boreisa.backend.validation.Phone;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @CreationTimestamp
+    @Column(name = "registration_date")
+    private LocalDate registrationDate;
+
+    @Length(min = 4)
+    @Column(name = "username")
     private String username;
 
+    @Length(min = 4)
+    @Column(name = "password")
     private String password;
+
+    @NotEmpty
+    @Transient
+    private String matchPassword;
+
+    @NotBlank
+    @Column(name = "country")
+    private String country;
+
+    @Phone
+    @Column(name = "phone_number")
+    private String phoneNum;
 
     @ManyToMany
     @Cascade(CascadeType.PERSIST)

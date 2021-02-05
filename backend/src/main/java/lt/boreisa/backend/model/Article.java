@@ -4,9 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -19,7 +17,7 @@ public class Article {
 
     @CreationTimestamp
     @Column(name = "creation_date")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "title")
     private String title;
