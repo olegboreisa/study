@@ -1,5 +1,10 @@
 {
-  "nav": {
+  "homepage": {
     "home": "Home!"
+  },
+  "navbar": {
+    "home": "Home",
+    "articles": "Articles",
+    "login": "Login"
   }
 }

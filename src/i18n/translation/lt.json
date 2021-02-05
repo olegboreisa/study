@@ -1,5 +1,10 @@
 {
-  "nav": {
+  "homepage": {
     "home": "Namai!"
+  },
+  "navbar": {
+    "home": "Namai",
+    "articles": "Straipsniai",
+    "login": "Prisijungti"
   }
 }
