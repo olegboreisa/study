@@ -5,6 +5,7 @@
   "navbar": {
     "home": "Namai",
     "articles": "Straipsniai",
-    "login": "Prisijungti"
+    "login": "Prisijungti",
+    "logout": "Atsijungti"
   }
 }

@@ -5,6 +5,7 @@
   "navbar": {
     "home": "Home",
     "articles": "Articles",
-    "login": "Login"
+    "login": "Login",
+    "logout": "Logout"
   }
 }

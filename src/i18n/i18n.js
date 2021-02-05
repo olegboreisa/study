@@ -13,6 +13,11 @@ i18next
             lt,
             en
         },
+        load: "languageOnly",
+        ns: ['common'],
+        defaultNS: 'common',
+        fallbackLng: 'en',
+        supportedLng: 'dev',
         whitelist: ['lt', 'en'],
         debug: true,
         interpolation: {
