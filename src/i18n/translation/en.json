@@ -8,6 +8,8 @@
     "login": "Login",
     "logout": "Logout",
     "greetings": "Welcome, ",
-    "sign": "Please, Sign In!"
+    "signIn": "Please, Sign In!",
+    "sign": "Sign In",
+    "register": "Register"
   }
 }

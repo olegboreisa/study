@@ -29,7 +29,6 @@ export default () => {
     return (
 
         <>
-        <Sidebar />
         <div className={classes.container}>
 
                 {

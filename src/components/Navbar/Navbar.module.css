@@ -49,6 +49,7 @@
     font-size: 12px;
     text-transform: uppercase;
     font-weight: bold;
+    text-align: center;
 }
 
 .active {
@@ -60,3 +61,11 @@
     justify-items: center;
     align-items: center;
 }
+
+
+.menu {
+    font-family: Lato, sans-serif;
+    color: white;
+    font-size: 18px;
+}
+

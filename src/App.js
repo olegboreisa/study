@@ -19,6 +19,7 @@ function App() {
                   </div>
 
                   <div className={classes.main}>
+                      <Sidebar />
                       <Content />
                   </div>
 

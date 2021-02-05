@@ -8,6 +8,8 @@
     "login": "Prisijungti",
     "logout": "Atsijungti",
     "greetings": "Sveiki, ",
-    "sign": "Prašau Prisijungti!"
+    "signIn": "Prašau Prisijungti!",
+    "sign": "Prisijungti",
+    "register": "Registruotis"
   }
 }
