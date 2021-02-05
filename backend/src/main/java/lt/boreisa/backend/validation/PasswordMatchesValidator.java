@@ -1,6 +1,6 @@
 package lt.boreisa.backend.validation;
 
-import lt.boreisa.finalblog.model.User;
+import lt.boreisa.backend.model.User;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

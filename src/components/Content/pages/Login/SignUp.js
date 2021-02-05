@@ -35,7 +35,7 @@ export default () => {
     const signUp = (formValues, formikHelpers) => {
         formikHelpers.setSubmitting(true)
         register(formValues)
-            .then(() => history.push('/home'))
+            .then(() => history.push('/login'))
             .finally(() => formikHelpers.setSubmitting(false))
     }
 

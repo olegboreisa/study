@@ -3,7 +3,7 @@ package lt.boreisa.backend.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import static lt.boreisa.finalblog.utils.StringUtil.areCharsDigits;
+import static lt.boreisa.backend.utils.StringUtil.areCharsDigits;
 
 public class PhoneValidator implements ConstraintValidator<Phone, String> {
 

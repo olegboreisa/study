@@ -1,5 +1,6 @@
 package lt.boreisa.backend.service;
 
+import lt.boreisa.backend.model.DTO.UserRegisterDTO;
 import lt.boreisa.backend.model.User;
 import lt.boreisa.backend.repository.UserRepo;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,5 +20,15 @@ public class UserService implements UserDetailsService {
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepo.findWithRolesByUsername(username).
                 orElseThrow();
+    }
+
+    public User getUserFromRegistration(UserRegisterDTO userRegisterDTO) {
+        User user = new User();
+        user.setUsername(userRegisterDTO.getUsername());
+        user.setPassword(userRegisterDTO.getPassword());
+        user.setMatchPassword(userRegisterDTO.getMatchPassword());
+        user.setCountry(userRegisterDTO.getCountry());
+        user.setPhoneNum(userRegisterDTO.getPhoneNum());
+        return userRepo.save(user);
     }
 }

@@ -13,5 +13,5 @@ public class UserRegisterDTO {
     private String matchPassword;
     private String country;
     private String phoneNum;
-    
+
 }
