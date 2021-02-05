@@ -1,9 +1,21 @@
 import React from 'react'
-import {Field, Form, Formik} from 'formik'
+import {ErrorMessage, Field, Form, Formik} from 'formik'
 import { getLogin } from '../../../../api/UserApi'
 import {useHistory} from "react-router";
 import {useDispatch} from "react-redux";
 import {setUserData, setJwt} from "../../../../store/Slices/UserSlice";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+    username: Yup.string()
+        .required('Required Field!')
+        .min(4, 'Required Field!')
+        .max(9, 'Required Field!'),
+    password: Yup.string()
+        .required('Required Field!')
+        .min(4, 'Required Field!')
+        .max(9, 'Required Field!'),
+})
 
 export default () => {
 
@@ -34,17 +46,21 @@ export default () => {
             username: '',
             password: ''
         }}
-        onSubmit={postLogin}>
-
+        onSubmit={postLogin}
+        validationSchema={validationSchema}
+        validateOnChange={false}
+        validateOnBlur={false}>
         {(props) => (
             <Form>
                 <div>
                     <label htmlFor="username">Username</label>
                     <Field name="username" id="username" placeholder="Please enter your username" />
+                    <ErrorMessage name="username" component="small" className="form-text text-danger"/>
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
                     <Field name="password" id="password" type="password" placeholder="Please enter your password" />
+                    <ErrorMessage name="password" component="small" className="form-text text-danger"/>
                 </div>
 
                 <button type="submit" disabled={props.isSubmitting}>Login</button>

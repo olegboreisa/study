@@ -7,10 +7,8 @@ import Container from '@material-ui/core/Container'
 import {ErrorMessage, Field, Form, Formik} from "formik"
 import {useHistory} from "react-router"
 import { register } from '../../../../api/UserApi'
-import PropsState from "../../../../PropsState"
 import {useTranslation} from "react-i18next"
 import * as Yup from "yup"
-
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -47,7 +45,7 @@ export default () => {
             .required(`${t('userV')}`),
         phoneNum: Yup.string()
             .required(`${t('userV')}`)
-            .matches(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+            .matches(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/, `${t('noMatchPhone')}`)
             .min(10, `${t('phoneCharMin')}`)
             .max(13, `${t('phoneCharMax')}`)
     })
@@ -70,11 +68,11 @@ export default () => {
             country: '',
             phoneNum: ''
         }}
-        onSubmit={signUp}>
-        validationSchema={validationSchema}>
+        onSubmit={signUp}
+        validationSchema={validationSchema}
+        validateOnChange={false}
+        validateOnBlur={false}>
             {(props) => (
-                <>
-                <PropsState {...props} />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
@@ -143,7 +141,6 @@ export default () => {
                     </Form>
                 </div>
             </Container>
-                </>
                 )}
         </Formik>
 

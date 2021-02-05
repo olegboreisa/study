@@ -25,6 +25,7 @@
     "charMax": "Field cannot exceed more than 9 characters!",
     "noMatch": "Passwords do not match!",
     "phoneCharMin": "Phone numbest must contain at least 9 digits!",
-    "phoneCharMax": "Phone numbest cannot exceed more than 13 digits!"
+    "phoneCharMax": "Phone numbest cannot exceed more than 13 digits!",
+    "noMatchPhone": "Entered invalid phone!"
   }
 }
