@@ -3,30 +3,16 @@ import classes from './Sidebar.module.css'
 import {Link} from "react-router-dom";
 import {faPlus, faMinus} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { getCategories, deleteCategory } from '../../api/CategoryApi'
 
 const Sidebar = () => {
-    const [categories, setCategories] = useState ([])
+    const categories = [
+        {id: 1, path: '/articles/biology', name: "Biology"},
+        {id: 2, path: '/articles/chemistry', name: "Chemistry"},
+        {id: 3, path: '/articles/art', name: "Art"},
+        {id: 4, path: '/articles/music', name: "Music"},
+        {id: 5, path: '/articles/mathematics', name: "Mathematics"}
+    ]
 
-    useEffect(() => {
-        getCategories()
-            .then(res => {
-                setCategories(res.data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [])
-
-    const deleteCategoryHandler = (id) => {
-        deleteCategory(id)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
 
     return (
         <div className={classes.container}>
@@ -36,17 +22,12 @@ const Sidebar = () => {
                     categories.map(cat => (
                         <div className={classes.wrapper} key={cat.id}>
 
-                            <Link to={cat.category} className={classes.link}>{cat.category} </Link>
-
-                            <FontAwesomeIcon icon={faMinus} size={"1x"} onClick={() => deleteCategoryHandler(cat.id)} className={classes.minus}/>
+                            <Link to={cat.path} className={classes.link}>{cat.name}</Link>
 
                         </div>
                     ))
                 }
             </div>
-            <Link to="/categories/add" className={classes.plus}>
-                <FontAwesomeIcon icon={faPlus} size={"2x"} />
-            </Link>
         </div>
 
     )

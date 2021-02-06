@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.container2 {
+
+}
+
+.fill {
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.elem {
+
+}

@@ -1,30 +1,11 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
+import classes from './SignUp.css'
 import {ErrorMessage, Field, Form, Formik} from "formik"
 import {useHistory} from "react-router"
 import { register } from '../../../../api/UserApi'
 import {useTranslation} from "react-i18next"
 import * as Yup from "yup"
-
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    Form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(3)
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2)
-    },
-}));
 
 export default () => {
     const { t } = useTranslation("regForm")
@@ -57,8 +38,6 @@ export default () => {
             .finally(() => formikHelpers.setSubmitting(false))
     }
 
-    const classes = useStyles();
-
     return (
         <Formik
         initialValues={{
@@ -71,76 +50,87 @@ export default () => {
         onSubmit={signUp}
         validationSchema={validationSchema}
         validateOnChange={false}
-        validateOnBlur={false}>
+        validateOnBlur={false}
+        className={classes.container}>
             {(props) => (
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <p>{t('form')}</p>
-                    <Form className={classes.form} noValidate>
-                        <Grid>
-                            <Grid>
-                                <label htmlFor="username">{t("username")}</label>
-                                <Field
-                                    id="username"
-                                    name="username"
-                                    type="text"
-                                />
-                                <ErrorMessage name="username" component="small" className="form-text text-danger"/>
-                            </Grid>
-                            <Grid>
-                                <label htmlFor="password">{t("pass")}</label>
-                                <Field
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                />
-                                <ErrorMessage name="password" component="small" className="form-text text-danger"/>
-                            </Grid>
-                            <Grid>
-                                <label htmlFor="matchPassword">{t("matchPass")}</label>
-                                <Field
-                                    id="matchPassword"
-                                    name="matchPassword"
-                                    type="password"
-                                />
-                                <ErrorMessage name="matchPassword" component="small" className="form-text text-danger"/>
-                            </Grid>
-                            <Grid>
-                                <label htmlFor="country">{t("country")}</label>
-                                <Field
-                                    id="country"
-                                    name="country"
-                                    as="select">
-                                    <option value="">{t("select")}</option>
-                                    <option value="Lithuania">Lithuania</option>
-                                    <option value="United States">United States</option>
-                                    <option value="Russia">Russia</option>
-                                </Field>
-                                <ErrorMessage name="country" component="small" className="form-text text-danger"/>
-                            </Grid>
-                            <Grid>
-                                <label htmlFor="phoneNum">{t("phone")}</label>
-                                <Field
-                                    id="phoneNum"
-                                    name="phoneNum"
-                                    type="text"
-                                />
-                                <ErrorMessage name="phoneNum" component="small" className="form-text text-danger"/>
-                            </Grid>
-                        </Grid>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            disabled={props.isSubmitting}
-                        >
-                            Sign Up
-                        </Button>
-                    </Form>
-                </div>
-            </Container>
+                        <div className={classes.container2}>
+                            <div className={classes.fill}>
+                                <p>{t('form')}</p>
+                            </div>
+
+                            <Form className={classes.form}>
+
+                                <div className={classes.elem}>
+                                    <label htmlFor="username">{t("username")}</label>
+                                    <Field
+                                        id="username"
+                                        name="username"
+                                        type="text"
+                                    />
+                                    <ErrorMessage name="username" component="small" className="form-text text-danger"/>
+                                </div>
+
+
+                                <div className={classes.elem}>
+                                    <label htmlFor="password">{t("pass")}</label>
+                                    <Field
+                                        id="password"
+                                        name="password"
+                                        type="password"
+                                    />
+                                    <ErrorMessage name="password" component="small" className="form-text text-danger"/>
+                                </div>
+
+
+                                <div className={classes.elem}>
+                                    <label htmlFor="matchPassword">{t("matchPass")}</label>
+                                    <Field
+                                        id="matchPassword"
+                                        name="matchPassword"
+                                        type="password"
+                                    />
+                                    <ErrorMessage name="matchPassword" component="small" className="form-text text-danger"/>
+                                </div>
+
+
+                                <div className={classes.elem}>
+                                    <label htmlFor="country">{t("country")}</label>
+                                    <Field
+                                        id="country"
+                                        name="country"
+                                        as="select">
+                                        <option value="">{t("select")}</option>
+                                        <option value="Lithuania">Lithuania</option>
+                                        <option value="United States">United States</option>
+                                        <option value="Russia">Russia</option>
+                                    </Field>
+                                    <ErrorMessage name="country" component="small" className="form-text text-danger"/>
+                                </div>
+
+
+                                <div className={classes.elem}>
+                                    <label htmlFor="phoneNum">{t("phone")}</label>
+                                    <Field
+                                        id="phoneNum"
+                                        name="phoneNum"
+                                        type="text"
+                                    />
+                                    <ErrorMessage name="phoneNum" component="small" className="form-text text-danger"/>
+                                </div>
+
+                                <div className={classes.elem}>
+                                    <Button
+                                        type="submit"
+                                        variant="contained"
+                                        color="primary"
+                                        disabled={props.isSubmitting}
+                                    >
+                                        Sign Up
+                                    </Button>
+                                </div>
+
+                            </Form>
+                        </div>
                 )}
         </Formik>
 
