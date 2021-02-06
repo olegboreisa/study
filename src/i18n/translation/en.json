@@ -26,7 +26,9 @@
     "noMatch": "Passwords do not match!",
     "phoneCharMin": "Phone numbest must contain at least 9 digits!",
     "phoneCharMax": "Phone numbest cannot exceed more than 13 digits!",
-    "noMatchPhone": "Entered invalid phone!"
+    "noMatchPhone": "Entered invalid phone!",
+    "login": "Login",
+    "error": "Bad credentials"
   },
   "categories": {
     "sign": "Please login to see categories!",
@@ -45,6 +47,7 @@
     "username": "Username",
     "pass": "Password",
     "login": "Login",
-    "error": "Bad credentials"
+    "error": "Bad credentials",
+    "reg": "Register"
   }
 }

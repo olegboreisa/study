@@ -11,6 +11,8 @@ import {faUserGraduate} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useTranslation} from "react-i18next";
 import Alert from "@material-ui/lab/Alert";
+import {Link, NavLink} from "react-router-dom";
+import AlertTitle from "@material-ui/lab/AlertTitle";
 
 
 
@@ -64,7 +66,7 @@ export default () => {
         {(props) => (
             <div className={classes.container}>
                 <Form className={classes.form}>
-                    <FontAwesomeIcon icon={faUserGraduate} size={"4x"}/>
+                    <FontAwesomeIcon icon={faUserGraduate} size={"4x"} className={classes.icon}/>
                     <h3>{t('signFormik')}</h3>
                     <div className={classes.elem}>
                         <label htmlFor="username" className={classes.label}>{t('username')}</label>
@@ -74,7 +76,7 @@ export default () => {
                     <div className={classes.elem}>
                         <label htmlFor="password" className={classes.label}>{t('pass')}</label>
                         <Field name="password" id="password" type="password" className={classes.field}/>
-                        <ErrorMessage name="password"component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                        <ErrorMessage name="password" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
                     </div>
                     <div className={classes.elem}>
                         <Button type="submit" disabled={props.isSubmitting} color="primary" variant="contained">{t('login')}</Button>
@@ -85,6 +87,9 @@ export default () => {
                             :
                             ''
                     }
+                        <Alert severity="info" className={classes.link}>
+                            <Link to="/signup" >{t('reg')}</Link>
+                        </Alert>
                 </Form>
             </div>
         )}

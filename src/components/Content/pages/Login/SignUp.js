@@ -1,15 +1,19 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import classes from './SignUp.css'
+import classes from './SignUp.module.css'
 import {ErrorMessage, Field, Form, Formik} from "formik"
 import {useHistory} from "react-router"
 import { register } from '../../../../api/UserApi'
 import {useTranslation} from "react-i18next"
 import * as Yup from "yup"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserGraduate} from "@fortawesome/free-solid-svg-icons";
+import Alert from "@material-ui/lab/Alert";
 
 export default () => {
     const { t } = useTranslation("regForm")
     const history = useHistory()
+    let catchSignIn = false
 
     const validationSchema = Yup.object().shape({
         username: Yup.string()
@@ -35,6 +39,9 @@ export default () => {
         formikHelpers.setSubmitting(true)
         register(formValues)
             .then(() => history.push('/login'))
+            .catch(() => {
+                catchSignIn = true;
+            })
             .finally(() => formikHelpers.setSubmitting(false))
     }
 
@@ -53,48 +60,45 @@ export default () => {
         validateOnBlur={false}
         className={classes.container}>
             {(props) => (
-                        <div className={classes.container2}>
-                            <div className={classes.fill}>
-                                <p>{t('form')}</p>
-                            </div>
-
-                            <Form className={classes.form}>
-
-                                <div className={classes.elem}>
-                                    <label htmlFor="username">{t("username")}</label>
+                <div className={classes.container}>
+                    <Form className={classes.form}>
+                        <FontAwesomeIcon icon={faUserGraduate} size={"5x"} className={classes.icon}/>
+                        <p className={classes.text}>{t('form')}</p>
+                             <div className={classes.elem}>
+                                    <label htmlFor="username" className={classes.label}>{t("username")} </label>
                                     <Field
                                         id="username"
                                         name="username"
                                         type="text"
                                     />
-                                    <ErrorMessage name="username" component="small" className="form-text text-danger"/>
+                                    <ErrorMessage name="username" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
                                 </div>
 
 
                                 <div className={classes.elem}>
-                                    <label htmlFor="password">{t("pass")}</label>
+                                    <label htmlFor="password" className={classes.label}>{t("pass")}</label>
                                     <Field
                                         id="password"
                                         name="password"
                                         type="password"
                                     />
-                                    <ErrorMessage name="password" component="small" className="form-text text-danger"/>
+                                    <ErrorMessage name="password" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
                                 </div>
 
 
                                 <div className={classes.elem}>
-                                    <label htmlFor="matchPassword">{t("matchPass")}</label>
+                                    <label htmlFor="matchPassword" className={classes.label}>{t("matchPass")}</label>
                                     <Field
                                         id="matchPassword"
                                         name="matchPassword"
                                         type="password"
                                     />
-                                    <ErrorMessage name="matchPassword" component="small" className="form-text text-danger"/>
+                                    <ErrorMessage name="matchPassword" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
                                 </div>
 
 
                                 <div className={classes.elem}>
-                                    <label htmlFor="country">{t("country")}</label>
+                                    <label htmlFor="country" className={classes.label}>{t("country")} </label>
                                     <Field
                                         id="country"
                                         name="country"
@@ -104,18 +108,18 @@ export default () => {
                                         <option value="United States">United States</option>
                                         <option value="Russia">Russia</option>
                                     </Field>
-                                    <ErrorMessage name="country" component="small" className="form-text text-danger"/>
+                                    <ErrorMessage name="country" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
                                 </div>
 
 
                                 <div className={classes.elem}>
-                                    <label htmlFor="phoneNum">{t("phone")}</label>
+                                    <label htmlFor="phoneNum" className={classes.label}>{t("phone")}</label>
                                     <Field
                                         id="phoneNum"
                                         name="phoneNum"
                                         type="text"
                                     />
-                                    <ErrorMessage name="phoneNum" component="small" className="form-text text-danger"/>
+                                    <ErrorMessage name="phoneNum" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
                                 </div>
 
                                 <div className={classes.elem}>
@@ -125,10 +129,15 @@ export default () => {
                                         color="primary"
                                         disabled={props.isSubmitting}
                                     >
-                                        Sign Up
+                                        {t('login')}
                                     </Button>
                                 </div>
-
+                        {
+                            catchSignIn === true ?
+                                (<Alert severity="error">{t('error')}</Alert>)
+                                :
+                                ''
+                        }
                             </Form>
                         </div>
                 )}
