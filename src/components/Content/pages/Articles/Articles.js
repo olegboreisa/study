@@ -27,33 +27,17 @@ export default () => {
     }, [])
 
     return (
-
-        <>
         <div className={classes.container}>
-
-                {
-                    loading
-                        ?   <CircularProgress />
-
-                        :   <div className={classes.articles}>
-                            {
-                                articles.map(article => (
-                                    <div className={classes.column}>
-                                        <Link to={`/articles/${article.id}`} className={classes.link}>
-
-                                            <ArticleBox title={article.title} />
-                                        </Link>
-                                    </div>
-                                ))
-                            }
-                                <div className={classes.addButton}>
-                                    <Link to={"/articles/add"} className={classes.addArticle}>
-                                        <FontAwesomeIcon icon={faPlusCircle} size={"3x"}/>
-                                    </Link>
-                                </div>
-                            </div>
-                }
+            {
+                articles.map(article => (
+                    <div className={classes.item}>
+                        <Link to={`/articles/${article.id}`}>
+                            <ArticleBox title={article.title} />
+                        </Link>
+                    </div>
+                ))
+            }
         </div>
-        </>
+
     )
 }
