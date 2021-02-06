@@ -33,13 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
-                .authorizeRequests()
-                    .antMatchers("/login", "/signup").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
+                    .and();
+//                .authorizeRequests()
+//                    .antMatchers("/login", "/signup").permitAll()
+//                    .anyRequest().authenticated()
+//                    .and()
+//                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))
+//                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtProvider));
     }
 
     @Bean

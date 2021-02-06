@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,6 +31,8 @@ public class Article {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @OneToMany(mappedBy = "article")
+    private List<Comment> commentList;
 }
 
 /**

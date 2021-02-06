@@ -16,8 +16,22 @@ INSERT INTO article (id, creation_date, title, text, category_id) VALUES
 
 (5, '2000-01-01', 'What is diffusion?', 'Diffusion is the movement of a substance from an area of high concentration to an area of low concentration.!', 1),
 
-(6, '1910-04-04', 'What diffusion happens in coffee?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1);
+(6, '1910-04-04', 'What diffusion happens in coffee?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1),
 
+(7, '1999-09-19', 'What is the topic1?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1),
+
+(8, '2019-02-16', 'What is the topic2?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1),
+
+(9, '1999-02-16', 'What is the topic3?', 'But even without convection, the smell would still reach you eventually - not by convection, but by diffusion. In diffusion, coffee particles move from the coffee machine (an area of high concentration) to the rest of the coffee shop (an area of low concentration)', 1);
+
+
+
+
+INSERT INTO COMMENT (id, posted_date, comment_text, article_id) VALUES
+(1, '1994-10-22', 'Nicely Writen!', 1),
+(2, '2002-06-11', 'Hate!', 1),
+(3, '2020-12-12', 'I would like to hear more information!', 1),
+(4, '1614-01-01', 'I did not read and I still rated it as a disinformation 5G RULES!', 2);
 
 INSERT INTO USER (id, password, username) VALUES
 (1, '{bcrypt}$2y$12$WL2JkfM0YPHgFKAuiC/ejuoAFQFlw7pHWYCpVtgqFISzpjfYMuyo6', 'user'),
