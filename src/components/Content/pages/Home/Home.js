@@ -1,16 +1,10 @@
 import React from 'react'
-import {useTranslation} from "react-i18next";
+import classes from './Home.module.css'
 
 export default () => {
-    const { t } = useTranslation('homepage')
 
     return (
-        <div>
-            {t('home')}
-        </div>
+        <div>Home</div>
     )
 
-
 }
-
-

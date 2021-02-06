@@ -36,5 +36,15 @@
     "art": "Art",
     "music": "Music",
     "mathematics": "Mathematics"
+  },
+  "signForm": {
+    "userV": "Required Field!",
+    "charMin": "Field must be at least 4 characters!",
+    "charMax": "Field cannot exceed more than 9 characters!",
+    "signFormik": "Sign Form",
+    "username": "Username",
+    "pass": "Password",
+    "login": "Login",
+    "error": "Bad credentials"
   }
 }

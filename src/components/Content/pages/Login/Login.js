@@ -5,21 +5,30 @@ import {useHistory} from "react-router";
 import {useDispatch} from "react-redux";
 import {setUserData, setJwt} from "../../../../store/Slices/UserSlice";
 import * as Yup from "yup";
+import classes from './Login.module.css'
+import Button from "@material-ui/core/Button";
+import {faUserGraduate} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useTranslation} from "react-i18next";
+import Alert from "@material-ui/lab/Alert";
 
-const validationSchema = Yup.object().shape({
-    username: Yup.string()
-        .required('Required Field!')
-        .min(4, 'Required Field!')
-        .max(9, 'Required Field!'),
-    password: Yup.string()
-        .required('Required Field!')
-        .min(4, 'Required Field!')
-        .max(9, 'Required Field!'),
-})
+
 
 export default () => {
-
+    const { t } = useTranslation("signForm")
     const history = useHistory() // [React Hook - History -> is an Object that has some URL Navigation Options]
+    let catchLogin = false
+
+    const validationSchema = Yup.object().shape({
+        username: Yup.string()
+            .required(`${t('userV')}`)
+            .min(4, `${t('charMin')}`)
+            .max(9, `${t('charMax')}`),
+        password: Yup.string()
+            .required(`${t('userV')}`)
+            .min(4, `${t('charMin')}`)
+            .max(9, `${t('charMax')}`),
+    })
 
     const dispatch = useDispatch() // [Dispatch Actions and Data]
 
@@ -30,10 +39,12 @@ export default () => {
             .then(({data, headers: {authorization}}) => {
                 dispatch(setUserData(data)) // [ {type: 'user/setUserData', payload: data}
                 dispatch(setJwt(authorization))
-
+                catchLogin = false;
                 history.push('/home')
                 }
-            )
+            ).catch( () => {
+                catchLogin = true;
+        })
             .finally(
                 () => formikHelpers.setSubmitting(false)
             )
@@ -51,20 +62,31 @@ export default () => {
         validateOnChange={false}
         validateOnBlur={false}>
         {(props) => (
-            <Form>
-                <div>
-                    <label htmlFor="username">Username</label>
-                    <Field name="username" id="username" placeholder="Please enter your username" />
-                    <ErrorMessage name="username" component="small" className="form-text text-danger"/>
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <Field name="password" id="password" type="password" placeholder="Please enter your password" />
-                    <ErrorMessage name="password" component="small" className="form-text text-danger"/>
-                </div>
-
-                <button type="submit" disabled={props.isSubmitting}>Login</button>
-            </Form>
+            <div className={classes.container}>
+                <Form className={classes.form}>
+                    <FontAwesomeIcon icon={faUserGraduate} size={"4x"}/>
+                    <h3>{t('signFormik')}</h3>
+                    <div className={classes.elem}>
+                        <label htmlFor="username" className={classes.label}>{t('username')}</label>
+                        <Field name="username" id="username" className={classes.field}/>
+                        <ErrorMessage name="username" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                    </div>
+                    <div className={classes.elem}>
+                        <label htmlFor="password" className={classes.label}>{t('pass')}</label>
+                        <Field name="password" id="password" type="password" className={classes.field}/>
+                        <ErrorMessage name="password"component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                    </div>
+                    <div className={classes.elem}>
+                        <Button type="submit" disabled={props.isSubmitting} color="primary" variant="contained">{t('login')}</Button>
+                    </div>
+                    {
+                        catchLogin === true ?
+                            (<Alert severity="error">{t('error')}</Alert>)
+                            :
+                            ''
+                    }
+                </Form>
+            </div>
         )}
     </Formik>
 )}

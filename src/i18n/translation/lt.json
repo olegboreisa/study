@@ -36,5 +36,15 @@
     "art": "Dailė",
     "music": "Muzika",
     "mathematics": "Matematika"
+  },
+  "signForm": {
+    "userV": "Būtinas laukas!",
+    "charMin": "Turi būti bent 4 simboliai!",
+    "charMax": "Negali būti daugiau nei 9 simboliai!",
+    "signFormik": "Prisijungimo forma",
+    "username": "Slapyvardas",
+    "pass": "Slaptažodis",
+    "login": "Prisijungti",
+    "error": "Blogai įvesti duomenys"
   }
 }

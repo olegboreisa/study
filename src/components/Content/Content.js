@@ -20,6 +20,7 @@ const Content = () => (
             <Route path="/articles/update/:id" component={UpdateArt} />
             <Route exact path="/articles" component={Articles} />
             <Route exact path="/home" component={Home}/>
+            <Route exact path="/" component={Home}/>
         </Switch>
 
 )

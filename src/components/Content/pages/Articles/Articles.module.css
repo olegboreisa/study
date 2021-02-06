@@ -11,3 +11,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.link {
+    color: black;
+}
+.link:hover {
+    text-decoration: none;
+}
+
