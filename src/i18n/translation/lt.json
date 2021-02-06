@@ -27,5 +27,14 @@
     "phoneCharMin": "Numeris turi būti bent 9 skaičiai!",
     "phoneCharMax": "Numeris negali viršyti 12 skaičių!",
     "noMatchPhone": "Entered invalid phone!"
+  },
+  "categories": {
+    "sign": "Prisijunkite, kad matyti kategorijas!",
+    "category": "Kategorijos",
+    "biology": "Biologija",
+    "chemistry": "Chemija",
+    "art": "Dailė",
+    "music": "Muzika",
+    "mathematics": "Matematika"
   }
 }

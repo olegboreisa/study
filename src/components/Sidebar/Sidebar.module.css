@@ -1,6 +1,7 @@
 .container {
     background-color: whitesmoke;
     min-width: 200px;
+    max-width: 220px;
     /*;*/
     display: flex;
     flex-direction: column;
@@ -49,4 +50,9 @@
 
 .wrapper {
     margin-top: 10px;
+}
+
+.container h5 {
+    text-align: center;
+    font-weight: bold;
 }

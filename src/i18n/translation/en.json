@@ -27,5 +27,14 @@
     "phoneCharMin": "Phone numbest must contain at least 9 digits!",
     "phoneCharMax": "Phone numbest cannot exceed more than 13 digits!",
     "noMatchPhone": "Entered invalid phone!"
+  },
+  "categories": {
+    "sign": "Please login to see categories!",
+    "category": "Categories",
+    "biology": "Biology",
+    "chemistry": "Chemistry",
+    "art": "Art",
+    "music": "Music",
+    "mathematics": "Mathematics"
   }
 }
