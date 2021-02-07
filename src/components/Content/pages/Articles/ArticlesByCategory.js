@@ -14,7 +14,7 @@ export default () => {
             .then(res => {
                 setArticles(res.data)
             })
-    }, [articles])
+    }, [id])
 
 
     return (
