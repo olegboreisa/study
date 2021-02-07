@@ -8,13 +8,14 @@ import Login from './pages/Login/Login'
 import Home from './pages/Home/Home'
 import Articles from './pages/Articles/Articles'
 import SignUp from "./pages/Login/SignUp"
+import ArticlesByCategory from "./pages/Articles/ArticlesByCategory";
 
 const Content = () => (
 
         <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/categories/add" component={CategoryAdd} />
+            <Route path="/articles/categories/:id" component={ArticlesByCategory} />
             <Route path="/articles/:id" component={Article} />
             <Route path="/articles/add" component={AddArticle} />
             <Route path="/articles/update/:id" component={UpdateArt} />

@@ -71,6 +71,15 @@ public class ArticleService {
         article.setCategory(categoryRepo.findById(articleDTO.getCategory().getId()).orElseThrow());
         articleRepo.save(article);
     }
+
+    // [FIND ALL ARTICLES BY CATEGORY]
+    public List<ArticleDTO> getAllArticlesByCategory (Long id) {
+        return ((List<Article>) articleRepo
+                .findArticlesByCategory(id))
+                .stream()
+                .map(this::convertToArticleDTO)
+                .collect(Collectors.toList());
+    }
 }
 
 

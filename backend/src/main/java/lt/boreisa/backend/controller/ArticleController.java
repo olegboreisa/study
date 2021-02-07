@@ -40,4 +40,9 @@ public class ArticleController {
     public void updateSingleArticle(@PathVariable Long id, @RequestBody ArticleDTO articleDTO){
         articleService.updateSingleArticle(id, articleDTO);
     }
+
+    @GetMapping("/articles/categories/{id}")
+    public List<ArticleDTO> getArticlesByCategory (@PathVariable Long id) {
+        return articleService.getAllArticlesByCategory(id);
+    }
 }

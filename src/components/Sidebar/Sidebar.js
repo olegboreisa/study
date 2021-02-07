@@ -10,11 +10,11 @@ const Sidebar = () => {
     const user = useSelector(state => state.user.userData)
 
     const categories = [
-        {id: 1, path: '/articles/biology', name: `${t('biology')}`},
-        {id: 2, path: '/articles/chemistry', name: `${t('chemistry')}`},
-        {id: 3, path: '/articles/art', name: `${t('art')}`},
-        {id: 4, path: '/articles/music', name: `${t('music')}`},
-        {id: 5, path: '/articles/mathematics', name: `${t('mathematics')}`}
+        {id: 1, name: `${t('biology')}`},
+        {id: 2, name: `${t('chemistry')}`},
+        {id: 3, name: `${t('art')}`},
+        {id: 4, name: `${t('music')}`},
+        {id: 5, name: `${t('mathematics')}`}
     ]
 
     return (
@@ -33,7 +33,7 @@ const Sidebar = () => {
                             categories.map(cat => (
                                 <div className={classes.wrapper} key={cat.id}>
 
-                                    <Link to={cat.path} className={classes.link}>{cat.name}</Link>
+                                    <Link to={`/articles/categories/${cat.id}`} className={classes.link}>{cat.name}</Link>
 
                                 </div>
                             ))

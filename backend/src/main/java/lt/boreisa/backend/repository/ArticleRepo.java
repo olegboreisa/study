@@ -3,6 +3,7 @@ package lt.boreisa.backend.repository;
 import lt.boreisa.backend.model.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,8 +13,8 @@ public interface ArticleRepo extends JpaRepository <Article, Long> {
 
 
     @Query(
-            value = "Select * FROM article WHERE category_name = ?1",
+            value = "Select * FROM article WHERE category_id = :categoryId",
             nativeQuery = true
     )
-    List <Article> findArticlesByCategory(String category);
+    List <Article> findArticlesByCategory(@Param("categoryId") Long id);
 }
