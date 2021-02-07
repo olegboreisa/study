@@ -8,11 +8,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {removeJwt, removeUserData} from "../../store/Slices/UserSlice";
 import ltu from "../Content/assets/pics/lt.png"
 import usa from "../Content/assets/pics/usa.png"
-import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
-import Login from "../Content/pages/Login/Login";
+import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
+
 
 const Navbar = () => {
 
@@ -20,8 +20,6 @@ const Navbar = () => {
     const history = useHistory()
     const user = useSelector(state => state.user.userData)
     const dispatch = useDispatch() // [CALL REDUX USER ACTIONS]
-
-    const anchorRef = React.useRef(null);
 
     const logout = () => {
         dispatch(removeUserData())
@@ -59,6 +57,10 @@ const Navbar = () => {
                     (<div className={classes.login}>
                         <FontAwesomeIcon icon={faUserGraduate} size={"4x"} className={classes.active}/>
                         <span className={classes.username}>{t('greetings')} {user.username}{'!'}</span>
+
+                        <Link to="/articles/add">
+                            <FontAwesomeIcon icon={faPlus} size={"1x"} className={classes.plus}/>
+                        </Link>
                     </div>)
             }
 

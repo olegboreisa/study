@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {getArticles, getArticlesByCategory} from "../../../../api/ArticleApi";
+import {getArticlesByCategory} from "../../../../api/ArticleApi";
 import {useParams} from "react-router";
 import ArticleListBox from "../../ArticleListBox";
 

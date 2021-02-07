@@ -16,9 +16,9 @@ const Content = () => (
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/articles/categories/:id" component={ArticlesByCategory} />
-            <Route path="/articles/:id" component={Article} />
-            <Route path="/articles/add" component={AddArticle} />
             <Route path="/articles/update/:id" component={UpdateArt} />
+            <Route path="/articles/add" component={AddArticle} />
+            <Route path="/articles/:id" component={Article} />
             <Route exact path="/articles" component={Articles} />
             <Route exact path="/home" component={Home}/>
             <Route exact path="/" component={Home}/>
