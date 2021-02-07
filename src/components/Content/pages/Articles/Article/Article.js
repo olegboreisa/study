@@ -3,14 +3,14 @@ import {useParams} from "react-router";
 import classes from './Article.module.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWrench, faTrash} from "@fortawesome/free-solid-svg-icons";
-import {Link} from "react-router-dom";
 import {deleteArticle, getArticle} from "../../../../../api/ArticleApi";
+import img from "../../../assets/pics/art.jpg";
+import Button from "@material-ui/core/Button";
 
 export default () => {
 
     const [article, setArticle] = useState({})
     const { id } = useParams()
-    console.log('ID', typeof id)
 
     useEffect(() => {
         getArticle(id)
@@ -33,24 +33,87 @@ export default () => {
     }
 
     return (
-            <div className={classes.container}>
-                <div>{article.id}</div>
-                <div>{article.title}</div>
-                <div>{article.text}</div>
-                <div>{article.date}</div>
+        <div className={classes.container}>
 
-                <Link to={`/api/articles/update/${article.id}`}>
-                    <FontAwesomeIcon icon={faWrench} size={"3x"}/>
-                </Link>
-
-                <FontAwesomeIcon icon={faTrash} size={"3x"}
-                                 onClick={() => deleteArticleHandler(article.id)}/>
+            <div className={classes.elemUp}>
 
             </div>
+
+            <div className={classes.elemDown}>
+
+                <div className={classes.left}>
+
+                    <div className={classes.title}>
+                        {article.title}
+                    </div>
+
+                    <div className={classes.photo}>
+                        <img src={img}/>
+                    </div>
+
+                </div>
+
+                <div className={classes.right}>
+
+                    <div className={classes.text}>
+                        {article.text}
+                    </div>
+
+                    <div className={classes.options}>
+
+                        <div className={classes.date}>{article.date}</div>
+
+                        <div className={classes.icons}>
+                            <div className={classes.update}>
+                                <FontAwesomeIcon icon={faWrench} size={"2x"}/>
+                            </div>
+
+                            <div className={classes.delete}>
+                                <FontAwesomeIcon icon={faTrash} size={"2x"}/>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div className={classes.commentContainer}>
+
+                <div className={classes.existingComments}>
+                    {/*{*/}
+                    {/*    comments.map(comment => {*/}
+                    {/*        return (*/}
+                    {/*            <div className={classes.comment}>*/}
+                    {/*                <h6>{comment.name} {comment.date}</h6>*/}
+                    {/*                <p>{comment.text}</p>*/}
+                    {/*            </div>*/}
+                    {/*        )*/}
+                    {/*    })*/}
+                    {/*}*/}
+                </div>
+
+
+                <div className={classes.addComment}>
+                    <form>
+                        <div className="form-group">
+                            <h4>Leave a comment</h4>
+                            <label htmlFor="message">Message</label>
+                            <textarea name="msg" id="msg" cols="30" rows="5" className="form-control"/>
+                        </div>
+
+                        <Button type="submit">Post</Button>
+
+                        <Button type="submit">Comment Section</Button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
     )
-
-
-
 }
 
 
