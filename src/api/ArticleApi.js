@@ -8,6 +8,6 @@ export const deleteArticle = (id) => HTTP.delete(`/articles/delete/${id}`)
 
 export const getArticlesByCategory = (id) => HTTP.get(`/articles/categories/${id}`)
 //
-// export const addArticle = () => HTTP.post()
+export const addArticle = (articleData) => HTTP.post('/articles/add', articleData)
 //
 // export const updateArticle = () => HTTP.put
