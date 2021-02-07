@@ -28,7 +28,8 @@
     "phoneCharMax": "Numeris negali viršyti 12 skaičių!",
     "noMatchPhone": "Entered invalid phone!",
     "login": "Prisijungti",
-    "error": "Blogai įvesti duomenys"
+    "error": "Blogai įvesti duomenys",
+    "numNum" : "Tik skaičiai"
   },
   "categories": {
     "sign": "Prisijunkite, kad matyti kategorijas!",
@@ -49,5 +50,23 @@
     "login": "Prisijungti",
     "error": "Blogai įvesti duomenys",
     "reg": "Prisiregistruoti"
+  },
+  "addArticle": {
+    "userV": "Būtinas laukas!",
+    "charMin": "Turi būti bent 4 simboliai!",
+    "charMin2": "Turi būti bent 100 simbolių!",
+    "charMax": "Negali būti daugiau nei 100 simbolių!",
+    "charMax2": "Negali būti daugiau nei 2500 simbolių!",
+    "selectCat": "Pasirinkite kategoriją!",
+    "write": "Rašykite straipsnį",
+    "cat": "Pasirinkite kategoriją",
+    "title": "Pavadinimas",
+    "text": "Tekstas",
+    "post": "Pridėti",
+    "biology": "Biologija",
+    "chemistry": "Chemija",
+    "art": "Dailė",
+    "music": "Muzika",
+    "math": "Matematika"
   }
 }

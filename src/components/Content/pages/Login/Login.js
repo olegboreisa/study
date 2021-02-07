@@ -11,10 +11,7 @@ import {faUserGraduate} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useTranslation} from "react-i18next";
 import Alert from "@material-ui/lab/Alert";
-import {Link, NavLink} from "react-router-dom";
-import AlertTitle from "@material-ui/lab/AlertTitle";
-
-
+import {Link} from "react-router-dom";
 
 export default () => {
     const { t } = useTranslation("signForm")

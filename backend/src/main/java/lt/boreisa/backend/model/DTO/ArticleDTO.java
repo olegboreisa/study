@@ -2,6 +2,8 @@ package lt.boreisa.backend.model.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -10,7 +12,7 @@ public class ArticleDTO {
 
     private Long id;
 
-    private Date date;
+    private LocalDate date;
 
     private String title;
 

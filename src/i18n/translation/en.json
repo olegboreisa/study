@@ -28,7 +28,8 @@
     "phoneCharMax": "Phone numbest cannot exceed more than 13 digits!",
     "noMatchPhone": "Entered invalid phone!",
     "login": "Login",
-    "error": "Bad credentials"
+    "error": "Bad credentials",
+    "numNum" : "Only numbers!"
   },
   "categories": {
     "sign": "Please login to see categories!",
@@ -49,5 +50,25 @@
     "login": "Login",
     "error": "Bad credentials",
     "reg": "Register"
+  },
+  "addArticle": {
+    "userV": "Required Field!",
+    "charMin": "Field must be at least 4 characters!",
+    "charMin2": "Field must be at least 100 characters!",
+    "charMax": "Field cannot exceed more than 100 characters!",
+    "charMax2": "Field cannot exceed more than 2500 characters!",
+    "selectCat": "Select category!",
+    "write": "Write article",
+    "cat": "Category",
+    "title": "Title",
+    "text": "Text",
+    "post": "Post",
+    "biology": "Biology",
+    "chemistry": "Chemistry",
+    "art": "Art",
+    "music": "Music",
+    "math": "Mathematics",
+    "lengthTitle" : "At least 4 words!",
+    "lengthText" : "At least 10 words!"
   }
 }
