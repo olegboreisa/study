@@ -51,7 +51,7 @@
     "error": "Bad credentials",
     "reg": "Register"
   },
-  "addArticle": {
+  "article": {
     "userV": "Required Field!",
     "charMin": "Field must be at least 4 characters!",
     "charMin2": "Field must be at least 100 characters!",

@@ -51,7 +51,7 @@
     "error": "Blogai įvesti duomenys",
     "reg": "Prisiregistruoti"
   },
-  "addArticle": {
+  "article": {
     "userV": "Būtinas laukas!",
     "charMin": "Turi būti bent 4 simboliai!",
     "charMin2": "Turi būti bent 100 simbolių!",
