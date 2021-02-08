@@ -58,16 +58,24 @@ const Navbar = () => {
                         <FontAwesomeIcon icon={faUserGraduate} size={"4x"} className={classes.active}/>
                         <span className={classes.username}>{t('greetings')} {user.username}{'!'}</span>
 
-                        <Link to="/articles/add">
-                            <FontAwesomeIcon icon={faPlus} size={"1x"} className={classes.plus}/>
-                        </Link>
+                        {
+                            user.roles.includes('ADMIN') ?
+                                (
+                                    <Link to="/articles/add">
+                                        <FontAwesomeIcon icon={faPlus} size={"1x"} className={classes.plus}/>
+                                    </Link>
+                                )
+                                :
+                                ''
+                        }
+
                     </div>)
             }
 
 
             <div className={classes.item2}>
                 <NavLink to={"/home"} className={classes.link}>{t('home')}</NavLink>
-                <NavLink to={"/articles"} className={classes.link}>{t('articles')}</NavLink>
+                <NavLink to={`/articles`} className={classes.link}>{t('articles')}</NavLink>
                 {
                     user === null ?
                         (

@@ -4,12 +4,13 @@ import ArticleBox from "./ArticleBox";
 import React from "react";
 
 
-export default ({dataFromParentToChild}) => {
+
+export default ({data}) => {
 
     return (
         <div className={classes.container}>
             {
-                dataFromParentToChild.map(article => (
+                data.map(article => (
                     <div className={classes.item}>
                         <Link to={`/articles/${article.id}`} className={classes.link}>
                             <ArticleBox title={article.title} />

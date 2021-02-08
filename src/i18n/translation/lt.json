@@ -68,5 +68,9 @@
     "art": "Dailė",
     "music": "Muzika",
     "math": "Matematika"
+  },
+  "footer" : {
+    "media" : "Socialiai Tinklai",
+    "follow" : "Sekite mus!"
   }
 }

@@ -1,6 +1,6 @@
 import HTTP from './Main'
 
-export const getArticles = () => HTTP.get(`/articles`)
+export const getArticles = (page, size) => HTTP.get(`/articles/?page=${page}&size=${size}`)
 
 export const getArticle = (id) => HTTP.get(`/articles/${id}`)
 

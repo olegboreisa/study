@@ -45,8 +45,8 @@ public class ArticleService {
         return article;
     }
 
-    public Page<ArticleDTO> getAllArticles() {
-        List<ArticleDTO> list = articleRepo.findAll()
+    public Page<ArticleDTO> getAllArticles(Pageable pageable) {
+        List<ArticleDTO> list = articleRepo.findAll(pageable)
                                                             .stream()
                                                             .map(this::convertToArticleDTO)
                                                             .collect(Collectors.toList());

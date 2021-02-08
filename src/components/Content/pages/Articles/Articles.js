@@ -1,30 +1,38 @@
 import React, {useEffect, useState} from 'react'
 import { getArticles } from '../../../../api/ArticleApi'
 import ArticleListBox from "../../ArticleListBox";
+import {useParams} from "react-router";
 
 export default () => {
 
     const [articles, setArticles] = useState([])
-    const [totalPages, setTotalPages]= useState()
-    const [itemsCountPerPage, setItemCountPerPage]= useState()
-    const [totalItemsCount, setTotalItemsCount]= useState()
+    const [totalArticles, setTotalArticles] = useState()
+    const { page, size } = useParams();
 
     useEffect(() => {
-        getArticles()
+        getArticles(0, 6)
             .then(res => {
-                // console.log(res)
-                // console.log('data',res.data.totalPages)
-                // console.log('size', res.data.size)
-                // console.log('elements', res.data.totalElements)
+                console.log('res', res.data.content)
                 setArticles(res.data.content)
-                setTotalPages(res.data.totalPages)
-                setItemCountPerPage(res.data.size)
-                setTotalItemsCount(res.data.totalElements)
+                setTotalArticles(res.data)
             })
     }, [])
 
-
     return (
-        <ArticleListBox dataFromParentToChild={articles} />
+        <ArticleListBox data={articles} />
     )
 }
+
+
+
+
+
+
+// const [currentPage, setCurrentPage] = useState(1)
+// const [articlesPerPage, setArticlesPerPage] = useState (6)
+// const [totalArticles, setTotalArticles]= useState()
+// const [itemsCountPerPage, setItemCountPerPage]= useState()
+// const [totalItemsCount, setTotalItemsCount]= useState()
+// const indexOfLastArticle = currentPage * articlesPerPage;
+// const indexOfFirstArticle = indexOfLastArticle - articles;
+// const currentArticle = articles.slice(indexOfFirstArticle, indexOfLastArticle);

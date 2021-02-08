@@ -70,5 +70,9 @@
     "math": "Mathematics",
     "lengthTitle" : "At least 4 words!",
     "lengthText" : "At least 10 words!"
+  },
+  "footer" : {
+    "media" : "Social Media",
+    "follow" : "Follow Us!"
   }
 }
