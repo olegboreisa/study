@@ -85,15 +85,3 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 }
-
-
-
-/**
- * Loose
- * The Loose matching strategy allows for source properties to be loosely matched to destination properties by requiring that only the last destination property in a hierarchy be matched. The following rules apply:
- *
- * Tokens can be matched in any order
- * The last destination property name must have all tokens matched
- * The last source property name must have at least one token matched
- * The loose matching strategy is ideal to use for source and destination object models with property hierarchies that are very dissimilar. It may result in a higher level of ambiguous matches being detected, but for well-known object models it can be a quick alternative to defining
- */

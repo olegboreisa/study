@@ -38,10 +38,3 @@ public class Article {
     private List<Comment> commentList;
 }
 
-/**
- * In a One-to-Many/Many-to-One relationship, the owning side is usually defined on the ‘many' side of the relationship. It's usually the side which owns the foreign key.
- *
- * The @JoinColumn annotation defines that actual physical mapping on the owning side
- *
- * It is simple means that Article Entity will have a foreign key named category_id referring to the primary attribute id of Category entity
- */

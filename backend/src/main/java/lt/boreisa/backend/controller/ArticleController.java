@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -31,7 +32,7 @@ public class ArticleController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/articles/add")
-    public void addArticle (@RequestBody ArticleDTO articleDTO) {
+    public void addArticle (@Valid @RequestBody ArticleDTO articleDTO) {
         articleService.saveArticle(articleDTO);
     }
 

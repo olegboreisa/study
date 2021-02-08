@@ -18,23 +18,4 @@ public class BeanConfig {
         return new ModelMapper();
     }
 
-    /**
-
-    //    Conversion from Entity to Data Transfer Object
-
-    private ArticleDTO convertToDTO (Article article) {
-        ArticleDTO articleDTO = modelMapper.map(Article, ArticleDTO.class);
-        return articleDTO;
-    }
-
-    //    Conversion from Data Transfer Object to Entity
-    private Article convertToEntity(ArticleDTO articleDTO) throws ParseException {
-        Article article = modelMapper.map(ArticleDTO, Article.class);
-        return article;
-
-    article.stream()
-    .map(this::convertToDTO)
-    .collect(Collectors.toList());
-    }
-    */
 }

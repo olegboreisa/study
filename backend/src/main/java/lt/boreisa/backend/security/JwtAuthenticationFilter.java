@@ -20,10 +20,6 @@ import java.util.Map;
 
 import static lt.boreisa.backend.security.SecurityConstants.*;
 
-/**
- * [Užklausų perėmimą. Pabandymą autentifikuoti asmenį] -> JwtAuthenticationFilter
- * [MES PERRAŠINĖJAM VIENĄ IŠ JAU EGZISTUOJANČIŲ FILTRŲ - UsernamePasswordAuthenticationFilter]
- */
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -58,19 +54,17 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
 
-        // [ATTACHING AUTHENTICATED USER INTO SECURITY CONTEXT TO CALL CONTROLLER]
         SecurityContextHolder.getContext().setAuthentication(authResult);
 
-        // [CREATING AND CASTING USER FROM APPLICATION.PROPERTIES]
+
         User user = (User) authResult.getPrincipal();
 
-        // [TOKEN CREATION BY USER DETAILS]
+
         String jwtToken = jwtProvider.createToken(user);
 
-        // [AUTHORIZATION TYPE BEARER BECAUSE WE RETURN TOKEN]
+
         response.addHeader(AUTHORIZATION_HEADER, AUTHORIZATION_HEADER_PREFIX + jwtToken);
 
-        // [WE DO NOT WANT TO STOP THE SECURITY PROCESS THEREFORE TO CONTINUE CHAIN]
         chain.doFilter(request, response);
     }
 }

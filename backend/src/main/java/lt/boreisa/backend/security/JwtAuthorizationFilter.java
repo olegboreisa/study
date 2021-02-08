@@ -25,13 +25,10 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         this.jwtProvider = jwtProvider;
     }
 
-    // [READ JWT TOKEN THAT COMES WITH HTTP HEADER AND PUT IT INTO SPRING SECURITY]
-    // [JwtAuthorization Filter TAKE A JWT TOKEN AND WANTS TO DO SOMETHING WITH IT]
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER); //
-
+        String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER);
 
         if (StringUtils.isNoneEmpty(authorizationHeader) && authorizationHeader.startsWith(AUTHORIZATION_HEADER_PREFIX)) {
             String jwt = authorizationHeader.replace(AUTHORIZATION_HEADER_PREFIX, "");
@@ -48,8 +45,3 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         chain.doFilter(request, response);
     }
 }
-
-// (33) [IŠSITRAUKIAM AUTORIZACIJOS HEADERĮ]
-// (36) [PATIKRINIMAS AR JIS NETUŠČIAS IR PRASIDEDA SU PREFIXSU]
-// (37) [DELETING JWT TOKEN PREFIX - SUTRUMPIMAS JWT IKI MUMS REIKALINGŲ DUOMENŲ]
-// (39) [ATIDUODAM JWT Į AUTENTIFICIKACIJOS PROVIDERĮ - NAUDOJAM. TAI YRA OBJEKTAS, KURĮ VĖLIAU NAUDOJAM IR SPRINGE - SECURITY KONTEKSTE]

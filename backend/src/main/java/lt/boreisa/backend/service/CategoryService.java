@@ -41,8 +41,7 @@ public class CategoryService {
     }
 
     public List<CategoryDTO> getAllCategories() {
-        return ((List<Category>) categoryRepo
-                .findAll())
+        return  categoryRepo.findAll()
                 .stream()
                 .map(this::convertToCategoryDTO)
                 .collect(Collectors.toList());

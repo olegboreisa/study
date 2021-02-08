@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class CategoryController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add-category")
-    public Category addCategory (@RequestBody CategoryDTO categoryDTO) {
+    public Category addCategory (@Valid @RequestBody CategoryDTO categoryDTO) {
         Category category = categoryService.convertToCategory(categoryDTO);
         return categoryService.saveCategory(category);
     }
