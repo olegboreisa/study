@@ -10,7 +10,7 @@ import {useTranslation} from "react-i18next";
 
 export default () => {
     const history = useHistory()
-    const { t } = useTranslation("Article")
+    const { t } = useTranslation("article")
 
     const validationSchema = Yup.object().shape({
         category: Yup.object().shape({

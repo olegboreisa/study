@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from "react-router";
+import {useHistory, useParams} from "react-router";
 import classes from './Article.module.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWrench, faTrash} from "@fortawesome/free-solid-svg-icons";
-import {deleteArticle, getArticle} from "../../../../../api/ArticleApi";
+import {deleteArticle, getArticle, updateArticle} from "../../../../../api/ArticleApi";
 import img from "../../../assets/pics/art.jpg";
 import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 
 export default () => {
 
     const [article, setArticle] = useState({})
+    const history = useHistory()
     const { id } = useParams()
 
     useEffect(() => {
@@ -22,10 +24,11 @@ export default () => {
                 })
     }, [])
 
-    const deleteArticleHandler = (id) => {
+
+    const deleteArticleHandler = () => {
         deleteArticle(id)
             .then(res => {
-                console.log(res)
+                history.push('/articles')
             })
             .catch(error => {
                 console.log(error)
@@ -36,7 +39,7 @@ export default () => {
         <div className={classes.container}>
 
             <div className={classes.elemUp}>
-
+                <span></span>
             </div>
 
             <div className={classes.elemDown}>
@@ -65,11 +68,17 @@ export default () => {
 
                         <div className={classes.icons}>
                             <div className={classes.update}>
-                                <FontAwesomeIcon icon={faWrench} size={"2x"}/>
+                                <Link
+                                    to={{
+                                        pathname:  `/articles/update/${id}`,
+                                        aboutProps: {article}
+                                    }}>
+                                    <FontAwesomeIcon icon={faWrench} size={"2x"}/>
+                                </Link>
                             </div>
 
                             <div className={classes.delete}>
-                                <FontAwesomeIcon icon={faTrash} size={"2x"}/>
+                                <FontAwesomeIcon icon={faTrash} size={"2x"} onClick={deleteArticleHandler}/>
                             </div>
                         </div>
 

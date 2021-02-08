@@ -1,9 +1,4 @@
 import React from 'react'
-import classes from './Home.module.css'
-import img from '../../assets/pics/art.jpg'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTrash, faWrench} from "@fortawesome/free-solid-svg-icons";
-import Button from "@material-ui/core/Button";
 
 export default () => {
 

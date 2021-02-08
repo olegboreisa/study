@@ -1,18 +1,22 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from "react-router";
+import {useHistory, useParams} from "react-router";
 import axios from "axios";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import classes from "./UpdateArticle.module.css";
 import {Button} from "@material-ui/core";
 import * as Yup from "yup";
 import {useTranslation} from "react-i18next";
-import {getArticle} from "../../../../../api/ArticleApi";
+import {updateArticle} from "../../../../../api/ArticleApi";
 
-export default () => {
+export default (props) => {
 
-    const [article, setArticle] = useState({})
+    const history = useHistory()
     const { t } = useTranslation("article")
     let { id } = useParams()
+
+    const {article} = props.location.aboutProps
+    console.log('props', props)
+    console.log('article', article)
 
     const validationSchema = Yup.object().shape({
         category: Yup.object().shape({
@@ -30,33 +34,27 @@ export default () => {
             .max(2500, `${t('charMax2')}`)
     })
 
-    useEffect( () => {
-    getArticle(id)
-        .then(response => {
-            setArticle(response.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    },[])
 
-    const handleOnSubmit = (formValues) => {
-        axios.put(`/api/articles/update/${id}`, formValues)
+    const handleOnSubmit = (formValues, formikHelpers) => {
+        formikHelpers.setSubmitting(true)
+        updateArticle(id, formValues)
             .then((response) => {
-                console.log(response)
+                history.push(`/articles/${id}`)
             })
             .catch(error => {
                 console.log(error)
             })
+            .finally(() => formikHelpers.setSubmitting(false))
     }
+
     return (
         <Formik
             initialValues={{
                 category: {
-                    id: ''
+                    id: `${article.category.id}`
                 },
-                title: '',
-                text: ''
+                title: `${article.title}`,
+                text: `${article.text}`
             }}
             onSubmit={handleOnSubmit}
             validationSchema={validationSchema}
@@ -84,7 +82,7 @@ export default () => {
 
                             <div className="form-group text-center">
                                 <label htmlFor="title">{t('title')}</label>
-                                <Field type="input" name="title" id="title" className="form-control"/>
+                                <Field type="input" name="title" id="title" className="form-control" />
                                 <ErrorMessage name="title" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
                             </div>
 

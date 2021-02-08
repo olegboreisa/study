@@ -31,7 +31,7 @@ export default () => {
         phoneNum: Yup.string()
             .required(`${t('userV')}`)
             .matches(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/, `${t('noMatchPhone')}`)
-            .matches(/^[0-9]+$/, `${t('numNum')}`)
+            // .matches(/^[0-9]+$/, `${t('numNum')}`)
             .min(10, `${t('phoneCharMin')}`)
             .max(13, `${t('phoneCharMax')}`)
     })
