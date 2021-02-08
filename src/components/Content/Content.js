@@ -9,6 +9,7 @@ import Home from './pages/Home/Home'
 import Articles from './pages/Articles/Articles'
 import SignUp from "./pages/Login/SignUp"
 import ArticlesByCategory from "./pages/Articles/ArticlesByCategory";
+import background from "./assets/pics/homey.jpg";
 
 const Content = () => (
 

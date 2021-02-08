@@ -15,7 +15,7 @@ const Footer = () => {
                 </div>
 
 
-                <p>Reserved by Oleg Boreiša &copy; 2021</p>
+                <p>Follow us!</p>
 
         </div>
     )

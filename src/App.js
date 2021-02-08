@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer"
 import classes from './App.module.css'
 import {Provider} from "react-redux";
 import store from './store/Store'
+import background from "./components/Content/assets/pics/homey.jpg";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
                       <Navbar />
                   </div>
 
-                  <div className={classes.main}>
+                  <div style={{backgroundImage: `url(${background})`}}className={classes.main}>
                       <Sidebar />
                       <Content />
                   </div>
