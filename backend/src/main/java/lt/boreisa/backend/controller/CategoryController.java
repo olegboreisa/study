@@ -6,6 +6,7 @@ import lt.boreisa.backend.repository.CategoryRepo;
 import lt.boreisa.backend.service.CategoryService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.*;
@@ -25,12 +26,14 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add-category")
     public Category addCategory (@RequestBody CategoryDTO categoryDTO) {
         Category category = categoryService.convertToCategory(categoryDTO);
         return categoryService.saveCategory(category);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/categories/delete/{id}")
     public void deleteCategory (@PathVariable Long id) {
         categoryService.deleteCategory(id);

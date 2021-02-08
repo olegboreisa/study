@@ -80,5 +80,10 @@
     "message": "Message",
     "post": "Post",
     "section": "Comment Section"
+  },
+  "home" : {
+    "soon" : "Coming Soon!",
+    "best" : "Best Educational Website",
+    "by" : "Reserved by"
   }
 }

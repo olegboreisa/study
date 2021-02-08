@@ -78,5 +78,10 @@
     "message": "Žinutė",
     "post": "Publikuoti",
     "section": "Žiūrėti komentarų sekciją"
+  },
+  "home" : {
+    "soon" : "Greitai!",
+    "best" : "Internetinis Puslapis Mokslinčiams!",
+    "by" : "Dėdės"
   }
 }

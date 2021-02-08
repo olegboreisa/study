@@ -96,8 +96,6 @@ export default () => {
 
                         }
 
-
-
                     </div>
 
                 </div>
@@ -121,18 +119,25 @@ export default () => {
 
 
                 <div className={classes.addComment}>
-                    <form>
-                        <div className="form-group">
-                            <h4>{t('comment')}</h4>
-                            <label htmlFor="message">{t('message')}</label>
-                            <textarea name="msg" id="msg" cols="30" rows="5" className="form-control"/>
-                        </div>
+                    {
+                        user && user.roles.includes('ADMIN') ?
+                            (
+                                <form>
+                                    <div className="form-group">
+                                        <h4>{t('comment')}</h4>
+                                        <label htmlFor="message">{t('message')}</label>
+                                        <textarea name="msg" id="msg" cols="30" rows="5" className="form-control"/>
+                                    </div>
 
-                        <Button type="submit">{t('post')}</Button>
+                                    <Button type="submit" color="primary" variant="contained" className={classes.button1}>{t('post')}</Button>
 
-                        <Button type="submit">{t('section')}</Button>
+                                    <Button type="submit" color="primary" variant="contained">{t('section')}</Button>
 
-                    </form>
+                                </form>
+                            )
+                            :
+                            ''
+                    }
                 </div>
 
             </div>

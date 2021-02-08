@@ -7,6 +7,7 @@ import lt.boreisa.backend.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,16 +29,19 @@ public class ArticleController {
         return articleService.getSingleArticle(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/articles/add")
     public void addArticle (@RequestBody ArticleDTO articleDTO) {
         articleService.saveArticle(articleDTO);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/articles/delete/{id}")
     public void deleteSingleArticle (@PathVariable Long id) {
         articleService.deleteSingleArticle(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/articles/update/{id}")
     public void updateSingleArticle(@PathVariable Long id, @RequestBody ArticleDTO articleDTO){
         articleService.updateSingleArticle(id, articleDTO);

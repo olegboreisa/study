@@ -1,0 +1,9 @@
+1. Import a third-party library - axios by npm install axios --save;
+2. Create a new JS class to create default url instance;
+3. Use axios.create ({baseURL: ''});
+
+[ROUTING] is an ability to switch between pages [BUT IN A SINGLE-PAGE MANNER WITHOUT LOADING A NEW HTML BUT UPDATING/RENDER COMPONENTS]
+
+1. To install a new library - Router - npm install react-router react-router-dom --save;
+2. Enable Routing in index.JS or App.JS! import { BrowserRouter } and apply it to the child components <BrowserRouter> </BrowserRouter>;
+3.
