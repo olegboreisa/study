@@ -18,6 +18,6 @@ export default () => {
 
 
     return (
-        <ArticleListBox dataFromParentToChild={articles} />
+        <ArticleListBox data={articles} />
     )
 }

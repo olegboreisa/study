@@ -77,13 +77,13 @@ export default (props) => {
                                     <option value="4">{t('music')}</option>
                                     <option value="5">{t('math')}</option>
                                 </Field>
-                                <ErrorMessage name="category.id" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                <ErrorMessage name="category.id" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                             </div>
 
                             <div className="form-group text-center">
                                 <label htmlFor="title">{t('title')}</label>
                                 <Field type="input" name="title" id="title" className="form-control" />
-                                <ErrorMessage name="title" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                <ErrorMessage name="title" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                             </div>
 
                             <div className="form-group text-center">
@@ -92,7 +92,7 @@ export default (props) => {
                                        rows="6"
                                        className="form-control">
                                 </Field>
-                                <ErrorMessage name="text" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                <ErrorMessage name="text" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                             </div>
 
                             <div className="form-group text-center">

@@ -7,10 +7,14 @@ import {deleteArticle, getArticle, updateArticle} from "../../../../../api/Artic
 import img from "../../../assets/pics/art.jpg";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {useTranslation} from "react-i18next";
 
 export default () => {
 
     const [article, setArticle] = useState({})
+    const user = useSelector(state => state.user.userData)
+    const { t } = useTranslation('singleArticle')
     const history = useHistory()
     const { id } = useParams()
 
@@ -66,21 +70,33 @@ export default () => {
 
                         <div className={classes.date}>{article.date}</div>
 
-                        <div className={classes.icons}>
-                            <div className={classes.update}>
-                                <Link
-                                    to={{
-                                        pathname:  `/articles/update/${id}`,
-                                        aboutProps: {article}
-                                    }}>
-                                    <FontAwesomeIcon icon={faWrench} size={"2x"}/>
-                                </Link>
-                            </div>
+                        {
+                            user && user.roles.includes('ADMIN') ?
+                                (
+                                <div className={classes.icons}>
 
-                            <div className={classes.delete}>
-                                <FontAwesomeIcon icon={faTrash} size={"2x"} onClick={deleteArticleHandler}/>
-                            </div>
-                        </div>
+                                    <div className={classes.update}>
+                                        <Link
+                                            to={{
+                                                pathname:  `/articles/update/${id}`,
+                                                aboutProps: {article}
+                                            }}>
+                                            <FontAwesomeIcon icon={faWrench} size={"2x"}/>
+                                        </Link>
+                                    </div>
+
+                                    <div className={classes.delete}>
+                                        <FontAwesomeIcon icon={faTrash} size={"2x"} onClick={deleteArticleHandler}/>
+                                    </div>
+
+                                </div>
+                            )
+                                :
+                                ''
+
+                        }
+
+
 
                     </div>
 
@@ -107,14 +123,14 @@ export default () => {
                 <div className={classes.addComment}>
                     <form>
                         <div className="form-group">
-                            <h4>Leave a comment</h4>
-                            <label htmlFor="message">Message</label>
+                            <h4>{t('comment')}</h4>
+                            <label htmlFor="message">{t('message')}</label>
                             <textarea name="msg" id="msg" cols="30" rows="5" className="form-control"/>
                         </div>
 
-                        <Button type="submit">Post</Button>
+                        <Button type="submit">{t('post')}</Button>
 
-                        <Button type="submit">Comment Section</Button>
+                        <Button type="submit">{t('section')}</Button>
 
                     </form>
                 </div>

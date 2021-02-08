@@ -24,10 +24,6 @@ export default () => {
 }
 
 
-
-
-
-
 // const [currentPage, setCurrentPage] = useState(1)
 // const [articlesPerPage, setArticlesPerPage] = useState (6)
 // const [totalArticles, setTotalArticles]= useState()

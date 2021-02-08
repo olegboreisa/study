@@ -74,5 +74,11 @@
   "footer" : {
     "media" : "Social Media",
     "follow" : "Follow Us!"
+  },
+  "singleArticle" : {
+    "comment": "Leave a comment",
+    "message": "Message",
+    "post": "Post",
+    "section": "Comment Section"
   }
 }

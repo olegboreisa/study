@@ -72,5 +72,11 @@
   "footer" : {
     "media" : "Socialiai Tinklai",
     "follow" : "Sekite mus!"
+  },
+  "singleArticle" : {
+    "comment": "Čia komentuokite",
+    "message": "Žinutė",
+    "post": "Publikuoti",
+    "section": "Žiūrėti komentarų sekciją"
   }
 }
