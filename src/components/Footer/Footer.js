@@ -15,7 +15,7 @@ const Footer = () => {
                 </div>
 
 
-                <p>Follow us!</p>
+                <p>Follow Us On Social Media!</p>
 
         </div>
     )

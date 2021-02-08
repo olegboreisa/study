@@ -5,6 +5,8 @@ import lt.boreisa.backend.model.Article;
 import lt.boreisa.backend.model.DTO.ArticleDTO;
 import lt.boreisa.backend.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +19,7 @@ public class ArticleController {
     private ArticleService articleService;
 
     @GetMapping("/articles")
-    public List<ArticleDTO> getArticles () {
+    public Page<ArticleDTO> getArticles () {
         return articleService.getAllArticles();
     }
 
