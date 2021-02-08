@@ -9,6 +9,7 @@ import Home from './pages/Home/Home'
 import Articles from './pages/Articles/Articles'
 import SignUp from "./pages/Login/SignUp"
 import ArticlesByCategory from "./pages/Articles/ArticlesByCategory";
+import Nothing from './Nothing'
 
 const Content = () => (
 
@@ -22,6 +23,7 @@ const Content = () => (
             <Route exact path="/articles" component={Articles} />
             <Route exact path="/home" component={Home}/>
             <Route exact path="/" component={Home}/>
+            <Route path="*" component={Nothing}/>
         </Switch>
 
 )

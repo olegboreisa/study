@@ -84,6 +84,7 @@
   "home" : {
     "soon" : "Coming Soon!",
     "best" : "Best Educational Website",
-    "by" : "Reserved by"
+    "by" : "Reserved by",
+    "notFound": "Page Not Found!"
   }
 }

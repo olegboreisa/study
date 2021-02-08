@@ -82,6 +82,7 @@
   "home" : {
     "soon" : "Greitai!",
     "best" : "Internetinis Puslapis Mokslinčiams!",
-    "by" : "Dėdės"
+    "by" : "Dėdės",
+    "notFound": "Puslapis Nerastas!"
   }
 }
