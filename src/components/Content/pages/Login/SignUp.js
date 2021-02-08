@@ -72,7 +72,7 @@ export default () => {
                                         name="username"
                                         type="text"
                                     />
-                                    <ErrorMessage name="username" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                    <ErrorMessage name="username" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                                 </div>
 
 
@@ -83,7 +83,7 @@ export default () => {
                                         name="password"
                                         type="password"
                                     />
-                                    <ErrorMessage name="password" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                    <ErrorMessage name="password" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                                 </div>
 
 
@@ -94,7 +94,7 @@ export default () => {
                                         name="matchPassword"
                                         type="password"
                                     />
-                                    <ErrorMessage name="matchPassword" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                    <ErrorMessage name="matchPassword" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                                 </div>
 
 
@@ -109,7 +109,7 @@ export default () => {
                                         <option value="United States">United States</option>
                                         <option value="Russia">Russia</option>
                                     </Field>
-                                    <ErrorMessage name="country" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                    <ErrorMessage name="country" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                                 </div>
 
 
@@ -120,7 +120,7 @@ export default () => {
                                         name="phoneNum"
                                         type="text"
                                     />
-                                    <ErrorMessage name="phoneNum" component="small" className="text-red-500 text-xs italic bold text-center text-warning"/>
+                                    <ErrorMessage name="phoneNum" component="small" className="text-red-500 text-xs italic bold text-center text-success"/>
                                 </div>
 
                                 <div className={classes.elem}>
