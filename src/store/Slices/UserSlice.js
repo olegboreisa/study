@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {loadFromStorage, saveToStorage} from "../utils/localStorage";
-import _ from "lodash";
+
 
 const initialState = {
     userData: null,
@@ -26,22 +25,6 @@ const userSlice = createSlice( {
     }
 })
 
-let prevUser = initialState
-
-export const subscribeToCartChanges = (store) => {
-    store.subscribe(_.throttle(() => {
-
-        const currentUser = store.getState().user
-
-        if (prevUser !== currentUser) {
-            prevUser = currentUser
-            saveToStorage('user', currentUser)
-        }
-
-    }, 1000))
-}
-
 export default userSlice.reducer
 export const { setUserData, setJwt, removeUserData, removeJwt } = userSlice.actions
 
-export const loadUserFromStorage = () => loadFromStorage('user')

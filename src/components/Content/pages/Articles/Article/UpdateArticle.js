@@ -65,7 +65,7 @@ export default (props) => {
                     <div className="container center_div col-lg-6">
                         <Form id="align-form">
 
-                            <h2 className="text-center">{t('write')}</h2>
+                            <h2 className="text-center">{t('update')}</h2>
 
                             <div className="form-group text-center">
                                 <label htmlFor="category">{t('cat')}</label>

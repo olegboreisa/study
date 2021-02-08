@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.*;
+import lt.boreisa.backend.validation.PasswordMatches;
 import lt.boreisa.backend.validation.Phone;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -22,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Data
+@PasswordMatches
 public class User implements UserDetails {
 
     @Id
@@ -36,7 +38,6 @@ public class User implements UserDetails {
     @Column(name = "username")
     private String username;
 
-    @NotBlank
     @Column(name = "password")
     private String password;
 

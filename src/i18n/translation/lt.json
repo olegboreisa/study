@@ -67,7 +67,8 @@
     "chemistry": "Chemija",
     "art": "Dailė",
     "music": "Muzika",
-    "math": "Matematika"
+    "math": "Matematika",
+    "update": "Redaguokite Straipsnį!"
   },
   "footer" : {
     "media" : "Socialiai Tinklai",
@@ -83,6 +84,7 @@
     "soon" : "Greitai!",
     "best" : "Internetinis Puslapis Mokslinčiams!",
     "by" : "Dėdės",
-    "notFound": "Puslapis Nerastas!"
+    "notFound": "Puslapis Nerastas!",
+    "signIn": "Prašau prisijungti, kad matyti daugiau!"
   }
 }

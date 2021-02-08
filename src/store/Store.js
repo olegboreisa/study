@@ -1,6 +1,6 @@
 import React from 'react';
 import {configureStore} from "@reduxjs/toolkit";
-import user, {loadUserFromStorage} from './Slices/UserSlice'
+import user from './Slices/UserSlice'
 
 export const createStore = (initialState) => {
 
@@ -8,7 +8,6 @@ export const createStore = (initialState) => {
         reducer: {
             user
         },
-        preloadedState: {user: loadUserFromStorage(), ...initialState}
     })
     return store
 }

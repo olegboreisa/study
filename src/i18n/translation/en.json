@@ -69,7 +69,8 @@
     "music": "Music",
     "math": "Mathematics",
     "lengthTitle" : "At least 4 words!",
-    "lengthText" : "At least 10 words!"
+    "lengthText" : "At least 10 words!",
+    "update": "Update Article Below!"
   },
   "footer" : {
     "media" : "Social Media",
@@ -85,6 +86,7 @@
     "soon" : "Coming Soon!",
     "best" : "Best Educational Website",
     "by" : "Reserved by",
-    "notFound": "Page Not Found!"
+    "notFound": "Page Not Found!",
+    "signIn": "Please sign in to see more content"
   }
 }

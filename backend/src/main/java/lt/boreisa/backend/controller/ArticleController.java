@@ -19,7 +19,7 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping("/articles/")
+    @GetMapping("/articles")
     public Page<ArticleDTO> getArticles (Pageable pageable) {
         return articleService.getAllArticles(pageable);
     }

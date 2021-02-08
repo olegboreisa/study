@@ -120,7 +120,7 @@ export default () => {
 
                 <div className={classes.addComment}>
                     {
-                        user && user.roles.includes('ADMIN') ?
+                        user && user.roles.includes('USER') ?
                             (
                                 <form>
                                     <div className="form-group">
@@ -129,9 +129,9 @@ export default () => {
                                         <textarea name="msg" id="msg" cols="30" rows="5" className="form-control"/>
                                     </div>
 
-                                    <Button type="submit" color="primary" variant="contained" className={classes.button1}>{t('post')}</Button>
+                                    <Button type="submit">{t('post')}</Button>
 
-                                    <Button type="submit" color="primary" variant="contained">{t('section')}</Button>
+                                    <Button type="submit">{t('section')}</Button>
 
                                 </form>
                             )

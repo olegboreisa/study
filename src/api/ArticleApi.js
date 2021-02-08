@@ -1,6 +1,8 @@
 import HTTP from './Main'
 
-export const getArticles = (page, size) => HTTP.get(`/articles/?page=${page}&size=${size}`)
+export const getArticles1 = (page, size) => HTTP.get(`/articles?page=${page}&size=${size}`)
+
+// export const getArticles2 = (params) => HTTP.get('/articles', {params})
 
 export const getArticle = (id) => HTTP.get(`/articles/${id}`)
 

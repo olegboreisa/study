@@ -90,9 +90,6 @@
 
     }
 
-    .button1 {
-        margin-right: 10px;
-    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -170,10 +167,6 @@
 
     .delete {
 
-    }
-
-    .button1 {
-        margin-right: 10px;
     }
 }
 

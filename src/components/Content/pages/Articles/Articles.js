@@ -1,34 +1,41 @@
 import React, {useEffect, useState} from 'react'
-import { getArticles } from '../../../../api/ArticleApi'
+import { getArticles1 } from '../../../../api/ArticleApi'
 import ArticleListBox from "../../ArticleListBox";
 import {useParams} from "react-router";
-
+import Pagination from "@material-ui/lab/Pagination";
+import classes from './Articles.module.css'
+import {useSelector} from "react-redux";
+import {useTranslation} from "react-i18next";
 export default () => {
 
+    const user = useSelector(state => state.user.userData)
+    const { t } = useTranslation('home')
     const [articles, setArticles] = useState([])
-    const [totalArticles, setTotalArticles] = useState()
-    const { page, size } = useParams();
+    // let { page, size } = useParams();
 
     useEffect(() => {
-        getArticles(0, 6)
+        getArticles1(0, 6)
             .then(res => {
-                console.log('res', res.data.content)
                 setArticles(res.data.content)
-                setTotalArticles(res.data)
+                console.log('articles', res.data.content)
             })
     }, [])
 
     return (
-        <ArticleListBox data={articles} />
+        <div className={classes.container}>
+            <ArticleListBox data={articles} />
+            {
+                user === null ?
+                    (
+                        <p className={classes.text}>{t('signIn')}</p>
+                    )
+                :
+                    (
+                <Pagination count={3}/>
+                )
+            }
+
+        </div>
+
     )
 }
-
-
-// const [currentPage, setCurrentPage] = useState(1)
-// const [articlesPerPage, setArticlesPerPage] = useState (6)
-// const [totalArticles, setTotalArticles]= useState()
-// const [itemsCountPerPage, setItemCountPerPage]= useState()
-// const [totalItemsCount, setTotalItemsCount]= useState()
-// const indexOfLastArticle = currentPage * articlesPerPage;
-// const indexOfFirstArticle = indexOfLastArticle - articles;
-// const currentArticle = articles.slice(indexOfFirstArticle, indexOfLastArticle);

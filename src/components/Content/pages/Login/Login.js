@@ -80,7 +80,9 @@ export default () => {
                     </div>
                     {
                         catchLogin === true ?
-                            (<Alert severity="error">{t('error')}</Alert>)
+                            ( <Alert severity="info" color="inherit">
+                                {t('error')}
+                            </Alert>)
                             :
                             ''
                     }

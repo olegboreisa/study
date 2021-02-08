@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                 .authorizeRequests()
-                    .antMatchers("/login", "/signup", "/articles/*", "/home").permitAll()
+                    .antMatchers("/login", "/signup", "/articles/**", "/home").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtProvider))

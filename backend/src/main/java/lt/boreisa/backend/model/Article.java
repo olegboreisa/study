@@ -2,6 +2,7 @@ package lt.boreisa.backend.model;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ public class Article {
     @Column(name = "title")
     private String title;
 
+    @Length(min = 10)
     @Lob
     @Column(name = "text")
     private String text;
